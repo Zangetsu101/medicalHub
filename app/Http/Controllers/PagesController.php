@@ -11,11 +11,6 @@ class PagesController extends Controller
         return view('pages.index');
     }
 
-    public function doctor()
-    {
-        return view('pages.doctor');
-    }
-
     public function doctorLogin()
     {
         return view('pages.doctorLogin');
