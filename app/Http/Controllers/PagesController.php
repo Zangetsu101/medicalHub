@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PagesController extends Controller
+{
+    public function index()
+    {
+        return view('pages.index');
+    }
+
+    public function doctor()
+    {
+        return view('pages.doctor');
+    }
+
+    public function doctorLogin()
+    {
+        return view('pages.doctorLogin');
+    }
+
+    public function patientLogin()
+    {
+        return view('pages.patientLogin');
+    }
+
+    public function appointment()
+    {
+        return view('pages.appointment');
+    }
+}
