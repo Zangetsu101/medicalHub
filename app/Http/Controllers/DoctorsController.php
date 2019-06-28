@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Doctor;
-use App\Speciality;
 use App\Department;
 
 class DoctorsController extends Controller
@@ -17,21 +16,16 @@ class DoctorsController extends Controller
     public function index()
     {
         $doctors=Doctor::all();
-        $i=0;
-        $arr=array();
         foreach($doctors as $doctor)
         {
-            $var=$doctor->spec_id;
-            $specialities=Speciality::all();
-            foreach($specialities as $speciality)
-            {
-                if($speciality->spec_id==$doctor->spec_id)
-                    $spec=$speciality->name;
-            }
-            $obj = array("name"=>$doctor->name,"spec"=>$spec);
-            $arr[$i++]=$obj;
+            $spec=$doctor->spec;
+            $hospital=$doctor->hospital;
+            $doctor["hospital_name"]=$hospital->name;
+            $doctor["spec_name"]=$spec->spec_name;
+            unset($doctor->spec_id);
+            unset($doctor->hospital_id);
         }
-        return view('pages.doctor')->with('doctors',$doctors);
+        return view('pages.doctors')->with('doctors',$doctors);
     }
 
 
@@ -65,6 +59,16 @@ class DoctorsController extends Controller
     public function show($id)
     {
         //
+        $doctor=Doctor::find($id);
+        $spec=Speciality::find($doctor->spec_id);
+        $hospital=Hospital::find($doctor->hospital_id);
+        $doctor["hospital_name"]=$hospital->name;
+        $doctor["spec_name"]=$spec->spec_name;
+        $dept=Department::find($spec->dept_id);
+        $doctor["dept_name"]=$dept->name;
+        unset($doctor->spec_id);
+        unset($doctor->hospital_id);
+        return $doctor;
     }
 
     /**

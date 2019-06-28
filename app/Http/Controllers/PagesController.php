@@ -23,6 +23,11 @@ class PagesController extends Controller
 
     public function appointment()
     {
-        return view('pages.appointment');
+        return view('pages.appointments');
+    }
+
+    public function department()
+    {
+        return view('pages.departments');
     }
 }

@@ -17,8 +17,8 @@ Route::get('/doctorlogin','PagesController@doctorLogin');
 
 Route::get('/patientlogin','PagesController@patientLogin');
 
-Route::get('/appointment','PagesController@appointment');
+Route::get('/appointments','PagesController@appointment');
 
-Route::resource('doctor','DoctorsController');
+Route::resource('doctors','DoctorsController');
 
-Route::resource('department','DepartmentController');
+Route::resource('departments','DepartmentsController');
