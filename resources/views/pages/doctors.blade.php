@@ -22,8 +22,8 @@
 							<div class="staff">
 								<div class="text pt-3 text-center">
 									<h3><a href="doctors/{{$doctor->doc_id}}">{{$doctor->name}}</a></h3>
-									<span class="position mb-2">{{$doctor->spec_name}}</span>
-                  <span class="position mb-2">{{$doctor->hospital_name}}</span>
+									<span class="position mb-2">{{$doctor->spec->spec_name}}</span>
+                  <span class="position mb-2">{{$doctor->hospital->name}}</span>
 									</div>
 								</div>
 							</div>

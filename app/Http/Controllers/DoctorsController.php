@@ -18,12 +18,10 @@ class DoctorsController extends Controller
         $doctors=Doctor::all();
         foreach($doctors as $doctor)
         {
-            $spec=$doctor->spec;
-            $hospital=$doctor->hospital;
-            $doctor["hospital_name"]=$hospital->name;
-            $doctor["spec_name"]=$spec->spec_name;
-            unset($doctor->spec_id);
-            unset($doctor->hospital_id);
+            $doctor->spec;
+            $doctor->hospital;
+            // unset($doctor->spec_id);
+            // unset($doctor->hospital_id);
         }
         return view('pages.doctors')->with('doctors',$doctors);
     }
@@ -60,14 +58,11 @@ class DoctorsController extends Controller
     {
         //
         $doctor=Doctor::find($id);
-        $spec=Speciality::find($doctor->spec_id);
-        $hospital=Hospital::find($doctor->hospital_id);
-        $doctor["hospital_name"]=$hospital->name;
-        $doctor["spec_name"]=$spec->spec_name;
-        $dept=Department::find($spec->dept_id);
-        $doctor["dept_name"]=$dept->name;
-        unset($doctor->spec_id);
-        unset($doctor->hospital_id);
+        $doctor->spec;
+        $doctor->hospital;
+        $doctor->spec->dept;
+        // unset($doctor->spec_id);
+        // unset($doctor->hospital_id);
         return $doctor;
     }
 
