@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Doctor;
-use App\Department;
 
 class DoctorsController extends Controller
 {
@@ -63,7 +62,7 @@ class DoctorsController extends Controller
         $doctor->spec->dept;
         // unset($doctor->spec_id);
         // unset($doctor->hospital_id);
-        return $doctor;
+        return view('pages.docprofile')->with('doctor',$doctor);
     }
 
     /**
