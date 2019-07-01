@@ -100,6 +100,7 @@
                         <li class="nav-item"><a href="/" class="nav-link pl-0">Home</a></li>
                         <li class="nav-item"><a href="doctors" class="nav-link">Doctors</a></li>
                         <li class="nav-item"><a href="departments" class="nav-link">Departments</a></li>
+
                     </ul>
                 </div>
             </div>
