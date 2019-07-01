@@ -22,3 +22,6 @@ Route::get('/appointments','PagesController@appointment');
 Route::resource('doctors','DoctorsController');
 
 Route::resource('departments','DepartmentsController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en">
     <head>
+        <title>Medical Hub- A Global Link Between Doctors and Patients</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-        <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
         
@@ -64,44 +54,20 @@
         </nav>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container d-flex align-items-center">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-                </button>
-                @guest
-                    <p class="button-custom order-lg-last mb-0"><a href="{{ route('login') }}" class="btn btn-secondary py-2 px-3">Login</a></p>
-                    @if (Route::has('register'))
-                        <p class="button-custom order-lg-last mb-0"><a href="{{ route('register') }}" class="btn btn-secondary py-2 px-3">Register</a></p>
-                    @endif
-                @else
-                <ul class="navbar-nav order-lg-last mb-0">
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+            </button>
+            <p class="button-custom order-lg-last mb-0"><a href="appointments" class="btn btn-secondary py-2 px-3">Make An Appointment</a></p>
+            <p class="button-custom order-lg-last mb-0"> <a href="doctorlogin" class="btn btn-secondary py-2 px-3" > Doctor Login </a>  </p>
+            <p class="button-custom order-lg-last mb-0"> <a href="patientlogin" class="btn btn-secondary py-2 px-3" > Patient Login </a>  </p>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/home">Home</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-                @endguest
-                <div class="collapse navbar-collapse" id="ftco-nav">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="/" class="nav-link pl-0">Home</a></li>
-                        <li class="nav-item"><a href="doctors" class="nav-link">Doctors</a></li>
-                        <li class="nav-item"><a href="departments" class="nav-link">Departments</a></li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="/" class="nav-link pl-0">Home</a></li>
+                <li class="nav-item"><a href="doctors" class="nav-link">Doctors</a></li>
+                <li class="nav-item"><a href="departments" class="nav-link">Departments</a></li>
+            </ul>
+            </div>
             </div>
         </nav>
 		<!-- end nav -->
@@ -132,5 +98,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="{{asset('js/google-map.js')}}"></script>
         <script src="{{asset('js/main.js')}}"></script>
+            
     </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,9 +64,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $id=Patient::all()->count()+1;
+        // Patient::create([
+        //     'patient_id' => $id,
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'mobile' => $data['mobile'],
+        //     'dob' => $data['dob'],
+        //     'gender' => $data['gender'],
+        // ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'type' => 1,
             'password' => Hash::make($data['password']),
         ]);
     }

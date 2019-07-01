@@ -17,8 +17,12 @@ class DepartmentsController extends Controller
     {
         //
         $departments=Department::all();
-        return $departments;
-        // return view('pages.departments')->with('departments',$departments);
+        foreach($departments as $department)
+        {
+            foreach($department->specialities as $speciality)
+                $speciality->doctors;
+        }
+        return view('pages.departments')->with('departments',$departments);
     }
 
     /**
