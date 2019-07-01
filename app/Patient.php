@@ -11,4 +11,5 @@ class Patient extends Model
        'patient_id', 'name', 'email', 'mobile', 'dob', 'gender'
     ];
     protected $primaryKey='patient_id';
+    public $timestamps=false;
 }
