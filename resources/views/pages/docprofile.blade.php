@@ -9,6 +9,7 @@
 
 
 <div class="card">
+    <img src="{{asset($doctor->image_url)}}">
   <h1>{{ $doctor->name }}</h1>
   <p class="title"> {{ $doctor->spec->spec_name }} <br>
    {{$doctor->designation}} <br>
