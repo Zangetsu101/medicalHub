@@ -4,18 +4,20 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+            {{-- <h2 class="subtitle">Welcome <i class="em em-dizzy"></i></h2>   --}}
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+            <div class="card-box">
+                <div class="info">
+                Patient Id: 12  <br>
+                Patient Name: Tameem <br>
+                Gender: Male  <br>
+                Patient Age: 20 
                 </div>
+            
+                <div class="patientmenu">
+                <button class="cta">View My Appoinments</button>
+                </div>
+                
             </div>
         </div>
     </div>
