@@ -8,14 +8,19 @@
 
             <div class="card-box">
                 <div class="info">
-                Patient Id: 12  <br>
-                Patient Name: Tameem <br>
-                Gender: Male  <br>
-                Patient Age: 20 
+                Patient Id: {{$patient->patient_id}}  <br>
+                Patient Name: {{$patient->name}} <br>
+                Gender: @if($patient->gender=='m')
+                            Male
+                        @else  
+                            Female
+                        @endif
+                        <br>
+                Date of Birth: {{$patient->dob}} 
                 </div>
             
                 <div class="patientmenu">
-                <button class="cta">View My Appoinments</button>
+                <button class="btn btn-primary">View My Appoinments</button>
                 </div>
                 
             </div>
