@@ -136,7 +136,11 @@
 			</div>
 		</section>
 		
+<<<<<<< HEAD
 	{{--	<section class="ftco-intro" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+=======
+		{{-- <section class="ftco-intro" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+>>>>>>> 262d8072d13c080ffb3c2faee7700877b52ef18a
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">

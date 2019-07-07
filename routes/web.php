@@ -11,17 +11,17 @@
 |
 */
 
-Route::get('/','PagesController@index');
+Route::get('/','PagesController@index')->name('/');
 
-Route::get('/doctorlogin','PagesController@doctorLogin');
+Route::get('/doctorlogin','PagesController@doctorLogin')->name('doctorLogin');
 
-Route::get('/patientlogin','PagesController@patientLogin');
+Route::get('/patientlogin','PagesController@patientLogin')->name('patientlogin');
 
-Route::get('/appointments','PagesController@appointment');
+Route::get('/appointments','PagesController@appointment')->name('appointments');
 
 Route::resource('doctors','DoctorsController');
 
 Route::resource('departments','DepartmentsController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

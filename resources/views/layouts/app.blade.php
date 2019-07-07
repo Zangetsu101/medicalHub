@@ -67,7 +67,11 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
                 </button>
+<<<<<<< HEAD
                     <p class="button-custom order-lg-last mb-0"><a href="appointments" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
+=======
+                    <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointments') }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
+>>>>>>> 262d8072d13c080ffb3c2faee7700877b52ef18a
                 @guest
                     <p class="button-custom order-lg-last mb-0"><a href="{{ route('login') }}" class="btn btn-secondary py-2 px-3">Login</a></p>
                     @if (Route::has('register'))
@@ -81,7 +85,11 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
                             <a class="dropdown-item" href="home">Dashboard</a>
+=======
+                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+>>>>>>> 262d8072d13c080ffb3c2faee7700877b52ef18a
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -98,9 +106,15 @@
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+<<<<<<< HEAD
                         <li class="nav-item"><a href="/medicalHub/public" class="nav-link pl-0">Home</a></li>
                         <li class="nav-item"><a href="doctors" class="nav-link">Doctors</a></li>
                         <li class="nav-item"><a href="departments" class="nav-link">Departments</a></li>
+=======
+                        <li class="nav-item"><a href="{{ route('/') }}" class="nav-link pl-0">Home</a></li>
+                        <li class="nav-item"><a href="{{ route('doctors.index') }}" class="nav-link">Doctors</a></li>
+                        <li class="nav-item"><a href="{{ route('departments.index') }}" class="nav-link">Departments</a></li>
+>>>>>>> 262d8072d13c080ffb3c2faee7700877b52ef18a
                     </ul>
                 </div>
             </div>
