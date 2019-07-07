@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
                     <div class="col-lg-2 pr-4 align-items-center">
-                        <a class="navbar-brand" href="/">Medical <span>Hub</span></a>
+                        <a class="navbar-brand" href="/medicalHub/public">Medical <span>Hub</span></a>
                     </div>
                     <div class="col-lg-10 d-none d-md-block">
                         <div class="row d-flex">
@@ -67,6 +67,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
                 </button>
+                    <p class="button-custom order-lg-last mb-0"><a href="appointments" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
                 @guest
                     <p class="button-custom order-lg-last mb-0"><a href="{{ route('login') }}" class="btn btn-secondary py-2 px-3">Login</a></p>
                     @if (Route::has('register'))
@@ -80,7 +81,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/home">Dashboard</a>
+                            <a class="dropdown-item" href="home">Dashboard</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -97,10 +98,9 @@
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="/" class="nav-link pl-0">Home</a></li>
+                        <li class="nav-item"><a href="/medicalHub/public" class="nav-link pl-0">Home</a></li>
                         <li class="nav-item"><a href="doctors" class="nav-link">Doctors</a></li>
                         <li class="nav-item"><a href="departments" class="nav-link">Departments</a></li>
-
                     </ul>
                 </div>
             </div>
