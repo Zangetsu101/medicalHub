@@ -17,11 +17,16 @@ Route::get('/doctorlogin','PagesController@doctorLogin')->name('doctorLogin');
 
 Route::get('/patientlogin','PagesController@patientLogin')->name('patientlogin');
 
-Route::get('/appointments','PagesController@appointment')->name('appointments');
-
 Route::resource('doctors','DoctorsController');
 
 Route::resource('departments','DepartmentsController');
+
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
+
+Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');
+
+Route::post('/doctors/{doctor}/appointment','AppointmentController@store')->name('appointment.store');

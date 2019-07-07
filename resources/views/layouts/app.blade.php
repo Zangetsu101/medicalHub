@@ -67,7 +67,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
                 </button>
-                    <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointments') }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
                 @guest
                     <p class="button-custom order-lg-last mb-0"><a href="{{ route('login') }}" class="btn btn-secondary py-2 px-3">Login</a></p>
                     @if (Route::has('register'))

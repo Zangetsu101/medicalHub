@@ -53,31 +53,11 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
-                            <div class="col-md-6" style="height:130px;">
-                                <div class='input-group date' id='datetimepicker'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar">
-                                        </span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#datetimepicker').datetimepicker({
-                                    viewMode: 'years'
-                                });
-                            });
-                        </script> --}}
-
                         <div class="form-group row">
                             <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+
                             <div class="col-md-6">
-                                <input id="dob" type="text" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required autocomplete="dob">
+                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required autocomplete="dob">
 
                                 @error('dob')
                                     <span class="invalid-feedback" role="alert">

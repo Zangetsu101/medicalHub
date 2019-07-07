@@ -21,11 +21,6 @@ class PagesController extends Controller
         return view('pages.patientLogin');
     }
 
-    public function appointment()
-    {
-        return view('pages.appointments');
-    }
-
     public function department()
     {
         return view('pages.departments');

@@ -3,6 +3,7 @@
     max-width: 600px;
     margin: auto;
     text-align: center;
+    padding: 25px;
   }
 
  .card img{
@@ -12,32 +13,3 @@
      margin-right: auto;
      border-radius: 50%;
  } 
-  
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-  
-  button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-  
-  button:hover, a:hover {
-    opacity: 0.7;
-  }
-
