@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Doctor;
+
 
 class DashboardController extends Controller
 {
@@ -28,14 +30,14 @@ class DashboardController extends Controller
         if($user->type==1)
         {
             $patient=Patient::find($user->foreign_id);
-            return view('patientdashboard')->with('patient',$patient);
+            return view('pages.patientdashboard')->with('patient',$patient);
         }
         else
         {
             $doctor=Doctor::find($user->foreign_id);
             $doctor->spec;
             $doctor->hospital;
-            return view('doctordashboard')->with('doctor',$doctor);
+            return view('pages.doctordashboard')->with('doctor',$doctor);
         }
     }
 }
