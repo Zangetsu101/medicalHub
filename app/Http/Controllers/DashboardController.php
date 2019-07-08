@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Doctor;
 use App\Appointment;
 
 class DashboardController extends Controller
