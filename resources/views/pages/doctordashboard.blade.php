@@ -7,17 +7,29 @@
             {{-- <h2 class="subtitle">Welcome <i class="em em-dizzy"></i></h2>   --}}
 
             <div class="card-box">
+                <div id="myDIV" class="header text-white" >
+                <h2>My Personal Info</h2>
+                </div>
+
                 <div class="info">
                 Doctor Id: {{$doctor->doc_id}}  <br>
                 Name: {{$doctor->name}} <br>
                 Designation: {{$doctor->designation}} <br>
                 Office: {{$doctor->room_no}},{{$doctor->hospital->name}} <br>
-                Spec: {{$doctor->spec->spec_name}}
+                Speciality: {{$doctor->spec->spec_name}}
                 </div>
             
-                <div class="patientmenu">
-                <button class="btn btn-primary">View My Appoinments</button>
+                
+                <div id="myDIV" class="header">
+                <h2>Your Total Upcoming Appointments: {{count($appointments)}}</h2>
+                <h2>UpComing Appointments</h2>
                 </div>
+
+                @foreach($appointments as $apt)
+                  <ul id="myUL">
+                    <li> Appt Id:{{$apt->appt_id}} ||  Appt Date:{{$apt->date}}  ||   Patient Id:{{$apt->patient_id}}</li>  
+                  </ul>  
+                @endforeach
                 
             </div>
         </div>

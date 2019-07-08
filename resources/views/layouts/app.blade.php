@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
         <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/doctortodo.css')}}">
     </head>
     <body>
         <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
