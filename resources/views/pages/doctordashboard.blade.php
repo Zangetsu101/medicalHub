@@ -7,7 +7,7 @@
             {{-- <h2 class="subtitle">Welcome <i class="em em-dizzy"></i></h2>   --}}
 
             <div class="card-box">
-                <div id="myDIV" class="header text-white" >
+                <div id="myDIV" class="header" >
                 <h2>My Personal Info</h2>
                 </div>
 
