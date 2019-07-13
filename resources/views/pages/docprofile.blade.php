@@ -22,34 +22,49 @@
     <link rel="stylesheet" href="{{asset('css/docprofile.css')}}">
 
     <section class="ftco-section">
-        <div class="card">
-            <img src="{{asset($doctor->image_url)}}">
-            <h1>{{ $doctor->name }}</h1>
-            <p class="title"> 
-                {{ $doctor->spec->spec_name }} <br>
-                {{$doctor->designation}} <br>
-                {{ $doctor->hospital->name }}, <br>
-                {{ $doctor->hospital->address }} <br>
-            </p>
-                
-            <h2> Contact Details </h2>
-            <p> Mobile Phone: {{$doctor->mobile}} <br>
-                Email: {{$doctor->address}} 
-            </p>
+        <div class="row">
 
-            <h2> Patient Consult Time </h2>
-            <p>
-                    Everyday  <br>
-                    Time : {{$doctor->start_time}} to {{ $doctor->end_time }} <br>
-                    Room No: {{ $doctor->room_no }} <br>
-                    {{$doctor->hospital->name}}
-            </p>
-            @guest
-            @else
-                <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
-            @endguest
+            <div class="column">
+                <div class="card">
+                    <img src="{{asset($doctor->image_url)}}">
+                    <h1>{{ $doctor->name }}</h1>
+                    <p class="title"> 
+                        {{ $doctor->spec->spec_name }} <br>
+                        {{$doctor->designation}} <br>
+                        {{ $doctor->hospital->name }} <br>
+                    </p>
+                </div>
+            </div>
 
+            <div class="column">
+                <div class="card">
+                    <h2> Contact Details </h2>
+                    <p> {{$doctor->hospital->name}} <br>
+                        {{$doctor->hospital->address}} <br>
+                        Mobile Phone: {{$doctor->mobile}} <br>
+                        Email: {{$doctor->address}} 
+                    </p> 
+                </div>        
+            </div>
+
+            <div class="column">
+                <div class="card">
+                <h2> Patient Consult Time </h2>
+                <p>
+                        Everyday  <br>
+                        Time : {{$doctor->start_time}} to {{ $doctor->end_time }} <br>
+                        Room No: {{ $doctor->room_no }} <br>
+                        {{$doctor->hospital->name}}
+                </p>
+                @guest
+                @else
+                    <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
+                @endguest
+                </div>
+            </div>           
         </div>
+        
+
     </section>
 
 @endsection
