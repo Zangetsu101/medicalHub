@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
         <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/doctortodo.css')}}">
+        {{-- <link rel="stylesheet" href="{{asset('css/doctortodo.css')}}"> --}}
     </head>
     <body>
         <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                                <span class="text">Phone: +880-1554352175 </span>
+                                <span class="text">Phone: +880-1554352175<br>+880-1554352175</span>
                             </div>
                         </div>
                     </div>
