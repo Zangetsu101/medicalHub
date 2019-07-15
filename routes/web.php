@@ -25,8 +25,18 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+Route::get('/dashboard/todayschedule', 'DashboardController@doctodayschedule')->name('doctodayschedule');
+
+Route::get('/dashboard/apptfortoday', 'DashboardController@apptfortoday')->name('apptfortoday');
+
+Route::get('/dashboard/criticalpatients', 'DashboardController@criticalpatients')->name('criticalpatients');
+
+Route::get('/dashboard/emergencyops', 'DashboardController@emergencyops')->name('emergencyops');
+
 Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 
 Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');
 
 Route::post('/doctors/{doctor}/appointment','AppointmentController@store')->name('appointment.store');
+
+

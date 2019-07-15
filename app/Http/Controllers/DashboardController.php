@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Patient;
 use App\Doctor;
 use App\Appointment;
+use App\criticalpatients;
+use App\Emoperations;
 
 class DashboardController extends Controller
 {
@@ -37,17 +39,73 @@ class DashboardController extends Controller
             $data=array('patient'=>$patient,'appointments'=>$appointments);
             return view('pages.patientdashboard')->with($data);
         }
-        else
+        else if($user->type==2)
         {
-            $doctor=Doctor::find($user->foreign_id);
-            $doctor->spec;
-            $doctor->hospital;
-            $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
-            $data =array(
-             'doctor'=> $doctor,
-             'appointments' => $appointments
-            );
-            return view('pages.doctordashboard')->with($data);
+            return view('pages.doctordashboard');
         }
+        
+        else if($user->type==3)
+        {
+            return view('pages.adminboard');
+        }
+
     }
+
+    public function apptfortoday()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+        $doctor->spec;
+        $doctor->hospital;
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+        foreach($appointments as $appointment)
+            $appointment->patient;
+        $data =array(
+            'doctor'=> $doctor,
+            'appointments' => $appointments
+        );
+        return view('pages.apptfortoday')->with($data);
+    }
+
+    public function doctodayschedule()
+    {
+        return view('pages.doctodayschedule');
+    }
+
+    public function criticalpatients()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+
+        $criticalpatients=Criticalpatients::where('doc_id',$doctor->doc_id)->get();
+
+        foreach($criticalpatients as $cp)
+            $cp->patient;
+ 
+         $data=array(
+            'criticalpatients'=>$criticalpatients,
+            'doctor'=>$doctor
+         );   
+
+        return view('pages.criticalpatients')->with($data);
+    }
+
+    public function emergencyops()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+
+        $emops=Emoperations::where('doc_id',$doctor->doc_id)->get();
+
+        foreach($emops as $em)
+            $em->patient;
+ 
+         $data=array(
+            'emops'=>$emops,
+            'doctor'=>$doctor
+         );   
+
+        return view('pages.emergencyops')->with($data);
+    }
+
 }

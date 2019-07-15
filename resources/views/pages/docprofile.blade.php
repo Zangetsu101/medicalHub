@@ -27,7 +27,7 @@
             <div class="column">
                 <div class="card">
                     <img src="{{asset($doctor->image_url)}}">
-                    <h1>{{ $doctor->name }}</h1>
+                    <b>{{ $doctor->name }}</b>
                     <p class="title"> 
                         {{ $doctor->spec->spec_name }} <br>
                         {{$doctor->designation}} <br>

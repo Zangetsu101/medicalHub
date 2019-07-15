@@ -19,6 +19,7 @@ class DoctorsController extends Controller
         $doctors=Doctor::all();
         $hospitals=Hospital::all();
         $departments=Department::all();
+
         foreach($doctors as $doctor)
         {
             $doctor->spec;
@@ -28,6 +29,7 @@ class DoctorsController extends Controller
         }
         foreach($departments as $department)
             $department->specialities;
+            
         $data=array('doctors'=>$doctors,'hospitals'=>$hospitals,
                     'departments'=>$departments);
         return view('pages.doctors')->with($data);

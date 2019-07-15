@@ -19,6 +19,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+        <link rel="stylesheet" href="{{asset('css/docmenustyles.css')}}">
         
         <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
@@ -36,6 +37,7 @@
         <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/doctortodo.css')}}">
+        <link rel="stylesheet" href="{{asset('css/doctodayschedule.css')}}">
     </head>
     <body>
         <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
@@ -133,5 +135,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="{{asset('js/google-map.js')}}"></script>
         <script src="{{asset('js/main.js')}}"></script>
+        
     </body>
 </html>

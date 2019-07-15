@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model
+class Criticalpatients extends Model
 {
     //
-    protected $primaryKey='appt_id';
-    public $timestamps=false;
+    protected $primaryKey='patient_id';
 
     public function doctor()
     {
@@ -19,4 +18,5 @@ class Appointment extends Model
     {
         return $this->belongsTo('App\Patient','patient_id','patient_id');
     }
+
 }
