@@ -21,7 +21,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <h1>Filters</h1>
+            <h1>Search Criteria</h1>
             <form method="POST" action="{{ route('doctors.filter') }}">
               @csrf
               <div class="form-group row">
@@ -38,18 +38,18 @@
                 </select>
               </div>
               <div class="form-group row">
-                <label for="department">Department:</label>
-                <select class="form-control" id="department" name="department">
-                    <option disabled selected> Select a department </option>
-                    @foreach($departments as $department)
-                      <option value="{{$department->dept_id}}">{{$department->name}}</option>
+                <label for="speciality">Speciality:</label>
+                <select class="form-control" id="speciality" name="speciality">
+                    <option disabled selected> Select a speciality </option>
+                    @foreach($specialities as $speciality)
+                      <option value="{{$speciality->spec_id}}">{{$speciality->spec_name}}</option>
                     @endforeach
                 </select>
               </div>
               <div class="form-group row mb-0">
                   <div class="col-md-6 offset-md-4">
                       <button type="submit" class="btn btn-primary">
-                          {{ __('Filter') }}
+                          {{ __('Search') }}
                       </button>
                   </div>
               </div>

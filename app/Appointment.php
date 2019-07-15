@@ -14,4 +14,14 @@ class Appointment extends Model
     {
         return $this->belongsTo('App\Doctor','doc_id','doc_id');
     }
+
+    public function prescriptions()
+    {
+        return $this->hasMany('App\Prescription','appt_id','appt_id');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany('App\Report','appt_id','appt_id');
+    }
 }

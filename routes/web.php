@@ -13,10 +13,6 @@
 
 Route::get('/','PagesController@index')->name('/');
 
-Route::get('/doctorlogin','PagesController@doctorLogin')->name('doctorLogin');
-
-Route::get('/patientlogin','PagesController@patientLogin')->name('patientlogin');
-
 Route::resource('doctors','DoctorsController');
 
 Route::resource('departments','DepartmentsController');
@@ -24,6 +20,8 @@ Route::resource('departments','DepartmentsController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/dashboard/appointment/{appointment}','AppointmentController@show')->name('appointment.show');
 
 Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 
