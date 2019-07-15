@@ -29,7 +29,8 @@
                         <div class="card-body">
                             <div class="list-group">
                             @foreach($reports as $report)
-                                <a href="#" class="list-group-item mb-2">
+                                <a href="{{route('report.show',['appointment'=>$appointment->appt_id,
+                                'report'=>$report->report_id])}}" class="list-group-item mb-2">
                                     <div class="row">{{$report->name}}</div>
                                 </a>
                             @endforeach
