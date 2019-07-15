@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Hospital;
 
 class PagesController extends Controller
 {
@@ -24,5 +25,11 @@ class PagesController extends Controller
     public function department()
     {
         return view('pages.departments');
+    }
+
+    public function hospitals()
+    {
+        $hospitals=Hospital::all();
+        return view('pages.hospitals')->with('hospitals', $hospitals);
     }
 }

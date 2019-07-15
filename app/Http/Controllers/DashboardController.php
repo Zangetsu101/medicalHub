@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user=auth()->user();
-        if($user->type==1)
+        if($user->type==1) //for patients
         {
             $patient=Patient::find($user->foreign_id);
             $appointments=Appointment::where([['date','>=',Date('Y/m/d')],
@@ -37,7 +37,7 @@ class DashboardController extends Controller
             $data=array('patient'=>$patient,'appointments'=>$appointments);
             return view('pages.patientdashboard')->with($data);
         }
-        else
+        else if($user->type==2) //for doctors
         {
             $doctor=Doctor::find($user->foreign_id);
             $doctor->spec;
@@ -48,6 +48,11 @@ class DashboardController extends Controller
              'appointments' => $appointments
             );
             return view('pages.doctordashboard')->with($data);
+        }
+        else if($user->type==3)
+        {
+            $admin=auth()->user();
+            return view('pages.admindashboard')->with('admin', $admin);
         }
     }
 }

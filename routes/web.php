@@ -30,3 +30,5 @@ Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');
 
 Route::post('/doctors/{doctor}/appointment','AppointmentController@store')->name('appointment.store');
+
+Route::get('/hospitals','PagesController@hospitals')->name('hospitals.index');

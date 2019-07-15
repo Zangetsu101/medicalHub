@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                                <span class="text">Phone: +880-1554352175<br>+880-1554352175</span>
+                                <span class="text">Phone: +880-1554352175<br>+880-1521328989</span>
                             </div>
                         </div>
                     </div>
@@ -101,6 +101,7 @@
                         <li class="nav-item"><a href="{{ route('/') }}" class="nav-link pl-0">Home</a></li>
                         <li class="nav-item"><a href="{{ route('doctors.index') }}" class="nav-link">Doctors</a></li>
                         <li class="nav-item"><a href="{{ route('departments.index') }}" class="nav-link">Departments</a></li>
+                        <li class="nav-item"><a href="{{ route('hospitals.index') }}" class="nav-link pl-0">Hospitals</a></li>
                     </ul>
                 </div>
             </div>
