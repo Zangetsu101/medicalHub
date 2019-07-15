@@ -19,10 +19,8 @@
     </section>
     <section class="ftco-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
+            <div class="row justify-content-center">
                 <div class="col-md-6"><img src="{{asset($report->location)}}"></div>
-                <div class="col-md-3"></div>
             </div>
         </div>
     </section>
