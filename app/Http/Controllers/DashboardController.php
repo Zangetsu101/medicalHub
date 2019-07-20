@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Patient;
 use App\Doctor;
 use App\Appointment;
-use App\criticalpatients;
+use App\Admittedpatient;
 use App\Emoperations;
 
 class DashboardController extends Controller
@@ -72,22 +72,23 @@ class DashboardController extends Controller
         return view('pages.doctodayschedule');
     }
 
-    public function criticalpatients()
+    public function admittedpatients()
     {
         $user=auth()->user();
         $doctor=Doctor::find($user->foreign_id);
 
-        $criticalpatients=Criticalpatients::where('doc_id',$doctor->doc_id)->get();
+        $admittedpatients=Admittedpatient::where('doc_id',$doctor->doc_id)->get();
 
-        foreach($criticalpatients as $cp)
-            $cp->patient;
+        foreach($admittedpatients as $ap)
+            $ap->patient;
  
          $data=array(
-            'criticalpatients'=>$criticalpatients,
+            'admittedpatients'=>$admittedpatients,
             'doctor'=>$doctor
          );   
 
-        return view('pages.criticalpatients')->with($data);
+        
+        return view('pages.admittedpatients')->with($data);
     }
 
     public function emergencyops()

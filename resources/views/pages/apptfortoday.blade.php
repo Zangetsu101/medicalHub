@@ -7,9 +7,9 @@
         <div class="vertical-menu">
             <a href="{{route('dashboard')}}" >Home</a>
             <a href="{{route('doctodayschedule')}}" >Today Schedule</a>
-            <a href="{{route('criticalpatients')}}">Critical Patients</a>
-            <a href="{{route('apptfortoday')}}" class="active">Appointments For Today</a>
-            <a href="{{route('emergencyops')}}">Emergency Operations</a>
+            <a href="{{route('admittedpatients')}}">Admitted Patients</a>
+            <a href="{{route('apptfortoday')}}">Upcoming Appointments</a>
+            <a href="{{route('emergencyops')}}">Upcoming Emergency Operations</a>
         </div>
     </div>
 

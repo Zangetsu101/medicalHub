@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Criticalpatients extends Model
+class Admittedpatient extends Model
 {
     //
     protected $primaryKey='patient_id';
@@ -18,5 +18,4 @@ class Criticalpatients extends Model
     {
         return $this->belongsTo('App\Patient','patient_id','patient_id');
     }
-
 }

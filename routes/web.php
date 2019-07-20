@@ -29,7 +29,7 @@ Route::get('/dashboard/todayschedule', 'DashboardController@doctodayschedule')->
 
 Route::get('/dashboard/apptfortoday', 'DashboardController@apptfortoday')->name('apptfortoday');
 
-Route::get('/dashboard/criticalpatients', 'DashboardController@criticalpatients')->name('criticalpatients');
+Route::get('/dashboard/admittedpatients', 'DashboardController@admittedpatients')->name('admittedpatients');
 
 Route::get('/dashboard/emergencyops', 'DashboardController@emergencyops')->name('emergencyops');
 
