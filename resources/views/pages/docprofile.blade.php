@@ -34,13 +34,13 @@
                 
             <h2> Contact Details </h2>
             <p> Mobile Phone: {{$doctor->mobile}} <br>
-                Email: {{$doctor->address}} 
+                Email: {{$doctor->email}} 
             </p>
 
             <h2> Patient Consult Time </h2>
-            <p>
-                    Everyday  <br>
-                    Time : {{$doctor->start_time}} to {{ $doctor->end_time }} <br>
+            <p> @foreach($doctor->schedule as $schedule)
+                {{$schedule->day}} : {{$schedule->start_time}} to {{ $schedule->end_time }} <br>
+                @endforeach
                     Room No: {{ $doctor->room_no }} <br>
                     {{$doctor->hospital->name}}
             </p>

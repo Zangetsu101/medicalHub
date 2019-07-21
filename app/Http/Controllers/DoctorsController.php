@@ -23,6 +23,7 @@ class DoctorsController extends Controller
         {
             $doctor->spec;
             $doctor->hospital;
+            $doctor->schedule;
             // unset($doctor->spec_id);
             // unset($doctor->hospital_id);
         }
@@ -96,6 +97,7 @@ class DoctorsController extends Controller
         $doctor->spec;
         $doctor->hospital;
         $doctor->spec->dept;
+        $doctor->schedule;
         // unset($doctor->spec_id);
         // unset($doctor->hospital_id);
         return view('pages.docprofile')->with('doctor',$doctor);

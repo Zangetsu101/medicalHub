@@ -41,22 +41,6 @@ class AppointmentController extends Controller
         return redirect('dashboard')->with('success','Appointment Added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-        $appointment=Appointment::find($id);
-        $prescriptions=$appointment->prescriptions;
-        $reports=$appointment->reports;
-        $data=array('appointment'=>$appointment,'prescriptions'=>$prescriptions,'reports'=>$reports);
-        return view('pages.appointment')->with($data);
-    }
-
     public function __construct()
     {
         $this->middleware('auth');

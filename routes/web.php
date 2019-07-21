@@ -21,9 +21,9 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/dashboard/appointment-{appointment}','AppointmentController@show')->name('appointment.show');
+Route::get('/dashboard/prescription-{prescription}','PrescriptionController@show')->name('prescription.show');
 
-Route::get('/dashboard/appointment-{appointment}/report-{report}','ReportController@show')->name('report.show');
+Route::get('/dashboard/prescription-{prescription}/report-{report}','ReportController@show')->name('report.show');
 
 Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 

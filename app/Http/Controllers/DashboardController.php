@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use JavaScript;
 use App\Patient;
 use App\Doctor;
 use App\Appointment;
+use App\Prescription;
 
 class DashboardController extends Controller
 {
@@ -30,18 +32,32 @@ class DashboardController extends Controller
         if($user->type==1)
         {
             $patient=Patient::find($user->foreign_id);
-            $upcomingAppointments=Appointment::where([['date','>=',Date('Y/m/d')],
+            $appointments=Appointment::where([['date','>=',Date('Y/m/d')],
                                               ['patient_id','=',$user->foreign_id]])->
                                               orderBy('date')->get();
-            foreach($upcomingAppointments as $appointment)
+            foreach($appointments as $appointment)
                 $appointment->doctor;
-            $previousAppointments=Appointment::where([['date','<',Date('Y/m/d')],
-                                              ['patient_id','=',$user->foreign_id]])->
-                                              orderBy('date','DESC')->get();
-            foreach($previousAppointments as $appointment)
-                $appointment->doctor;
-            $data=array('patient'=>$patient,'upcomingAppointments'=>$upcomingAppointments,
-                        'previousAppointments'=>$previousAppointments);
+            $prescriptions=$patient->prescriptions;
+            $dates=array();
+            $weights=array();
+            $bp_low=array();
+            $bp_high=array();
+            foreach($prescriptions as $prescription)
+            {
+                $prescription->appointment;
+                array_push($dates,$prescription->appointment->date);
+                array_push($weights,$prescription->weight);
+                array_push($bp_low,$prescription->bp_low);
+                array_push($bp_high,$prescription->bp_high);
+            }
+            $data=array('patient'=>$patient,'appointments'=>$appointments,
+                        'prescriptions'=>$prescriptions);
+            JavaScript::put([
+                'dates' => $dates,
+                'weights' => $weights,
+                'bp_low' => $bp_low,
+                'bp_high' => $bp_high
+            ]);
             return view('pages.patientdashboard')->with($data);
         }
         else

@@ -9,8 +9,8 @@ class Report extends Model
     //
     protected $primaryKey='report_id';
 
-    public function appointment()
+    public function prescription()
     {
-        return $this->belongsTo('App\Appointment','appt_id','appt_id');
+        return $this->belongsTo('App\Prescription','appt_id','appt_id');
     }
 }
