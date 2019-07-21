@@ -34,7 +34,7 @@
                 
             <h2> Contact Details </h2>
             <p> Mobile Phone: {{$doctor->mobile}} <br>
-                Email: {{$doctor->address}} 
+                Email: {{$doctor->email_address}} 
             </p>
 
             <h2> Patient Consult Time </h2>

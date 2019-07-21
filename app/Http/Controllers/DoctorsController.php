@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Doctor;
 use App\Hospital;
 use App\Department;
+use App\Speciality;
+
 
 class DoctorsController extends Controller
 {
@@ -39,9 +41,25 @@ class DoctorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $id=count(Doctor::all())+1;
+        $doctor = new Doctor;
+        $doctor->doc_id=$id;
+        $doctor->name=$request->input('name');
+        $doctor->mobile=$request->input('mobile');
+        $doctor->email_address=$request->input('email');
+        $doctor->spec_id=$request->input('spec');
+        $doctor->hospital_id=$request->input('hospital');
+        $doctor->designation=$request->input('designation');
+        $doctor->start_time=$request->input('start');
+        $doctor->end_time=$request->input('endt');
+        $doctor->room_no=$request->input('room');
+        // return $doctor;
+        
+        $doctor->save();
+
+        return redirect('dashboard');
     }
 
     public function filter(Request $request)
@@ -143,5 +161,13 @@ class DoctorsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function doctorRegister()
+    {
+        $hospitals=Hospital::all();
+        $specialities=Speciality::all();
+        $data=array('hospitals'=>$hospitals,'specialities'=>$specialities);
+        return view('pages.doctorregister')->with($data);
     }
 }

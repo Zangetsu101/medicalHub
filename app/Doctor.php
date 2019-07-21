@@ -8,6 +8,7 @@ class Doctor extends Model
 {
     //
     protected $primaryKey='doc_id';
+    public $timestamps=false;
 
     public function spec()
     {
