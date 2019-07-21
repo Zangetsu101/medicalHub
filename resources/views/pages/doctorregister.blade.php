@@ -103,7 +103,7 @@
                             </div>
                         </div>
 
-                        {{-- Start time --}}
+                        {{-- Start time
                         <div class="form-group row">
                             <label for="start" class="col-md-4 col-form-label text-md-right">{{ __('Start time') }}</label>
 
@@ -118,7 +118,7 @@
                             </div>
                         </div>
 
-                        {{-- End time --}}
+                        End time
                         <div class="form-group row">
                             <label for="endt" class="col-md-4 col-form-label text-md-right">{{ __('End time') }}</label>
 
@@ -131,7 +131,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- room number --}}
                         <div class="form-group row">

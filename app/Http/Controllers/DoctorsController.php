@@ -48,7 +48,7 @@ class DoctorsController extends Controller
         $doctor->doc_id=$id;
         $doctor->name=$request->input('name');
         $doctor->mobile=$request->input('mobile');
-        $doctor->email_address=$request->input('email');
+        $doctor->email=$request->input('email');
         $doctor->spec_id=$request->input('spec');
         $doctor->hospital_id=$request->input('hospital');
         $doctor->designation=$request->input('designation');
