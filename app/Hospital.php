@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hospital extends Model
 {
-    //
     protected $primaryKey='hospital_id';
+    public $timestamps=false;
 
     public function doctors()
     {

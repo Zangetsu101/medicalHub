@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Hospital;
+use App\Department;
 
 class HospitalsController extends Controller
 {
@@ -21,9 +23,19 @@ class HospitalsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $id=count(Hospital::all())+1;
+        $hospital = new Hospital;
+        $hospital->hospital_id=$id;
+        $hospital->name=$request->input('name');
+        $hospital->address=$request->input('address');
+        $hospital->mobile=$request->input('mobile');
+        $hospital->license_no=$request->input('license');
+        
+        $hospital->save();
+
+        return redirect('dashboard');
     }
 
     /**
@@ -80,5 +92,10 @@ class HospitalsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hospitalRegister()
+    {
+        return view('pages.hospitalregister');
     }
 }
