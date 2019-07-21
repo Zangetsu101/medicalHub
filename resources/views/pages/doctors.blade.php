@@ -64,7 +64,7 @@
                         <h3><a href="doctors/{{$doctor->doc_id}}">{{$doctor->name}}</a></h3>
                         <span class="position mb-2">{{$doctor->spec->spec_name}}</span>
                         <span class="position mb-2">{{$doctor->hospital->name}}</span>
-                        <span class="position mb-2">{{$doctor->fee}}</span>
+                        <span class="position mb-2">Fee:{{$doctor->fee}}</span>
                         @foreach($doctor->schedule as $schedule)
                             <span class="position mb-2">{{$schedule->day}} {{$schedule->start_time}}-{{$schedule->end_time}}</span>
                         @endforeach

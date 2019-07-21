@@ -30,6 +30,7 @@
                 {{$doctor->designation}} <br>
                 {{ $doctor->hospital->name }}, <br>
                 {{ $doctor->hospital->address }} <br>
+                Fee:{{ $doctor->fee }} <br>
             </p>
                 
             <h2> Contact Details </h2>
