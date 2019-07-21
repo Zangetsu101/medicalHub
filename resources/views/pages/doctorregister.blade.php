@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Doctor Registration') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('doctors.create') }}">
+                    <form method="POST" action="{{ route('doctor.create') }}">
                         @csrf
                         {{-- For Name --}}
                         <div class="form-group row"> 

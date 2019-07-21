@@ -53,13 +53,13 @@ class DoctorsController extends Controller
         $doctor->hospital_id=$request->input('hospital');
         $doctor->designation=$request->input('designation');
         $doctor->start_time=$request->input('start');
-        $doctor->end_time=$request->input('endt');
-        $doctor->room_no=$request->input('room');
+        //$doctor->end_time=$request->input('endt');
+        //$doctor->room_no=$request->input('room');
         // return $doctor;
         
         $doctor->save();
 
-        return redirect('dashboard');
+        return redirect()->route('timingform', ['doctor'=> $id]);
     }
 
     public function filter(Request $request)
@@ -169,5 +169,19 @@ class DoctorsController extends Controller
         $specialities=Speciality::all();
         $data=array('hospitals'=>$hospitals,'specialities'=>$specialities);
         return view('pages.doctorregister')->with($data);
+    }
+
+    public function timingForm(Request $request)
+    {
+        $doctor=Doctor::find($request->doctor);
+        //return $doctor;
+        return view('pages.timingform')->with('doctor', $doctor);
+    }
+
+    public function doctorTiming(Request $request)
+    {
+        $doctor=Doctor::find($request->doctor);
+        //if($request->input('sun'))
+        return redirect('dashboard');
     }
 }

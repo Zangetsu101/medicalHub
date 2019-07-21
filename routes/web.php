@@ -35,8 +35,12 @@ Route::get('/hospitals','PagesController@hospitals')->name('hospitals.index');
 
 Route::get('/docreg', 'DoctorsController@doctorRegister')->name('docreg');
 
-Route::post('/docreg', 'DoctorsController@create')->name('doctors.create');
+Route::post('/docreg', 'DoctorsController@create')->name('doctor.create');
 
 Route::get('/hosreg', 'HospitalsController@hospitalRegister')->name('hosreg');
 
 Route::post('/hosreg', 'HospitalsController@create')->name('hospital.create');
+
+Route::get('/{doctor}/timingform', 'DoctorsController@timingForm')->name('timingform');
+
+Route::post('/{doctor}/timingform', 'DoctorsController@doctorTiming')->name('doctiming.create');
