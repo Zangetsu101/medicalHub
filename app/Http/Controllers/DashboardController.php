@@ -8,6 +8,7 @@ use App\Doctor;
 use App\Appointment;
 use App\Admittedpatient;
 use App\Emoperations;
+use App\Docevent;
 
 class DashboardController extends Controller
 {
@@ -41,7 +42,7 @@ class DashboardController extends Controller
         }
         else if($user->type==2)
         {
-            return view('pages.doctodayschedule');
+            return redirect()->route('upcomingevents');
         }
         
         else if($user->type==3)
@@ -51,7 +52,7 @@ class DashboardController extends Controller
 
     }
 
-    public function apptfortoday()
+    public function upcomingappts()
     {
         $user=auth()->user();
         $doctor=Doctor::find($user->foreign_id);
@@ -64,12 +65,16 @@ class DashboardController extends Controller
             'doctor'=> $doctor,
             'appointments' => $appointments
         );
-        return view('pages.apptfortoday')->with($data);
+        return view('pages.upcomingappts')->with($data);
     }
 
-    public function doctodayschedule()
+    public function upcomingevents()
     {
-        return view('pages.doctodayschedule');
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+        $event=Docevent::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+
+        return view('pages.upcomingevents')->with('event',$event);
     }
 
     public function admittedpatients()

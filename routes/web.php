@@ -25,9 +25,9 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/dashboard/todayschedule', 'DashboardController@doctodayschedule')->name('doctodayschedule');
+Route::get('/dashboard/upcomingevents', 'DashboardController@upcomingevents')->name('upcomingevents');
 
-Route::get('/dashboard/apptfortoday', 'DashboardController@apptfortoday')->name('apptfortoday');
+Route::get('/dashboard/upcomingappts', 'DashboardController@upcomingappts')->name('upcomingappts');
 
 Route::get('/dashboard/admittedpatients', 'DashboardController@admittedpatients')->name('admittedpatients');
 

@@ -5,10 +5,10 @@
 <div class="row">
     <div class="columns">
         <div class="vertical-menu">
-            <a href="{{route('doctodayschedule')}}">Today Schedule</a>
+            <a href="{{route('upcomingevents')}}">Upcoming Events</a>
             <a href="{{route('admittedpatients')}}" >Admitted Patients</a>
-            <a href="{{route('apptfortoday')}}">Upcoming Appointments</a>
-            <a href="{{route('emergencyops')}}">Upcoming Emergency Operations</a>
+            <a href="{{route('upcomingappts')}}">Upcoming Appointments</a>
+            <a href="{{route('emergencyops')}}"class="active">Upcoming Emergency Operations</a>
         </div>
     </div>
 
