@@ -24,4 +24,9 @@ class Appointment extends Model
     {
         return $this->hasMany('App\Report','appt_id','appt_id');
     }
+    
+    public function patient()
+    {
+        return $this->belongsTo('App\Patient','patient_id','patient_id');
+    }
 }

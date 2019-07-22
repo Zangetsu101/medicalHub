@@ -8,6 +8,9 @@ use App\Patient;
 use App\Doctor;
 use App\Appointment;
 use App\Prescription;
+use App\Admittedpatient;
+use App\Emoperations;
+use App\Docevent;
 
 class DashboardController extends Controller
 {
@@ -60,17 +63,9 @@ class DashboardController extends Controller
             ]);
             return view('pages.patientdashboard')->with($data);
         }
-        else if($user->type==2) //for doctors
+        else if($user->type==2)
         {
-            $doctor=Doctor::find($user->foreign_id);
-            $doctor->spec;
-            $doctor->hospital;
-            $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
-            $data =array(
-             'doctor'=> $doctor,
-             'appointments' => $appointments
-            );
-            return view('pages.doctordashboard')->with($data);
+            return redirect()->route('upcomingevents');
         }
         else if($user->type==3)
         {
@@ -78,4 +73,67 @@ class DashboardController extends Controller
             return view('pages.admindashboard')->with('admin', $admin);
         }
     }
+
+    public function upcomingappts()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+        $doctor->spec;
+        $doctor->hospital;
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+        foreach($appointments as $appointment)
+            $appointment->patient;
+        $data =array(
+            'doctor'=> $doctor,
+            'appointments' => $appointments
+        );
+        return view('pages.upcomingappts')->with($data);
+    }
+
+    public function upcomingevents()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+        $event=Docevent::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+
+        return view('pages.upcomingevents')->with('event',$event);
+    }
+
+    public function admittedpatients()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+
+        $admittedpatients=Admittedpatient::where('doc_id',$doctor->doc_id)->get();
+
+        foreach($admittedpatients as $ap)
+            $ap->patient;
+ 
+         $data=array(
+            'admittedpatients'=>$admittedpatients,
+            'doctor'=>$doctor
+         );   
+
+        
+        return view('pages.admittedpatients')->with($data);
+    }
+
+    public function emergencyops()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+
+        $emops=Emoperations::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+
+        foreach($emops as $em)
+            $em->patient;
+ 
+         $data=array(
+            'emops'=>$emops,
+            'doctor'=>$doctor
+         );   
+
+        return view('pages.emergencyops')->with($data);
+    }
+
 }

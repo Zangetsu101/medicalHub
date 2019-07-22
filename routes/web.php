@@ -25,6 +25,14 @@ Route::get('/dashboard/prescription-{prescription}','PrescriptionController@show
 
 Route::get('/dashboard/prescription-{prescription}/report-{report}','ReportController@show')->name('report.show');
 
+Route::get('/dashboard/upcomingevents', 'DashboardController@upcomingevents')->name('upcomingevents');
+
+Route::get('/dashboard/upcomingappts', 'DashboardController@upcomingappts')->name('upcomingappts');
+
+Route::get('/dashboard/admittedpatients', 'DashboardController@admittedpatients')->name('admittedpatients');
+
+Route::get('/dashboard/emergencyops', 'DashboardController@emergencyops')->name('emergencyops');
+
 Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 
 Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');

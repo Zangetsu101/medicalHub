@@ -19,6 +19,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+        <link rel="stylesheet" href="{{asset('css/docmenustyles.css')}}">
         
         <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
@@ -35,7 +36,7 @@
         <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
         <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        @yield('style')
+        @yield('style')        
     </head>
     <body>
         <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">

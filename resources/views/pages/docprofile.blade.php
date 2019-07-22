@@ -46,7 +46,6 @@
                     {{$doctor->hospital->name}}
             </p>
             <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
-
         </div>
     </section>
 
