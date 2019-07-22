@@ -19,4 +19,9 @@ class Doctor extends Model
     {
         return $this->belongsTo('App\Hospital','hospital_id','hospital_id');
     }
+
+    public function schedule()
+    {
+        return $this->hasMany('App\Doctor_schedule','doc_id','doc_id');
+    }
 }

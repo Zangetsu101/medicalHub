@@ -30,24 +30,22 @@
                 {{$doctor->designation}} <br>
                 {{ $doctor->hospital->name }}, <br>
                 {{ $doctor->hospital->address }} <br>
+                Fee:{{ $doctor->fee }} <br>
             </p>
                 
             <h2> Contact Details </h2>
             <p> Mobile Phone: {{$doctor->mobile}} <br>
-                Email: {{$doctor->email_address}} 
+                Email: {{$doctor->email}} 
             </p>
 
             <h2> Patient Consult Time </h2>
-            <p>
-                    Everyday  <br>
-                    Time : {{$doctor->start_time}} to {{ $doctor->end_time }} <br>
+            <p> @foreach($doctor->schedule as $schedule)
+                {{$schedule->day}} : {{$schedule->start_time}} to {{ $schedule->end_time }} <br>
+                @endforeach
                     Room No: {{ $doctor->room_no }} <br>
                     {{$doctor->hospital->name}}
             </p>
-            @guest
-            @else
-                <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
-            @endguest
+            <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
 
         </div>
     </section>

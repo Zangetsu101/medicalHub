@@ -21,18 +21,17 @@ class DoctorsController extends Controller
     {
         $doctors=Doctor::all();
         $hospitals=Hospital::all();
-        $departments=Department::all();
+        $specialities=Speciality::all();
         foreach($doctors as $doctor)
         {
             $doctor->spec;
             $doctor->hospital;
+            $doctor->schedule;
             // unset($doctor->spec_id);
             // unset($doctor->hospital_id);
         }
-        foreach($departments as $department)
-            $department->specialities;
         $data=array('doctors'=>$doctors,'hospitals'=>$hospitals,
-                    'departments'=>$departments);
+                    'specialities'=>$specialities);
         return view('pages.doctors')->with($data);
     }
 
@@ -68,26 +67,20 @@ class DoctorsController extends Controller
     {
         $name=$request->input('name');
         $hospital=Hospital::find($request->input('hospital'));
-        $department=Department::find($request->input('department'));
+        $speciality=Speciality::find($request->input('speciality'));
         if($hospital)
             $doctors=$hospital->doctors;
         else
             $doctors=Doctor::all();
-        if($department)
-        {
-            $specialities=$department->specialities;
-            $temp=collect();
-            foreach($specialities as $speciality)
-                $temp=$temp->merge($speciality->doctors);
-            $doctors=$doctors->intersect($temp);
-        }
+        if($speciality)
+           $doctors=$doctors->intersect($speciality->doctors);
         if($name)
         {
             $temp=Doctor::where('name','LIKE','%'.$name.'%')->get();
             $doctors=$doctors->intersect($temp);
         }
         $hospitals=Hospital::all();
-        $departments=Department::all();
+        $specialities=Speciality::all();
         foreach($doctors as $doctor)
         {
             $doctor->spec;
@@ -95,10 +88,8 @@ class DoctorsController extends Controller
             // unset($doctor->spec_id);
             // unset($doctor->hospital_id);
         }
-        foreach($departments as $department)
-            $department->specialities;
         $data=array('doctors'=>$doctors,'hospitals'=>$hospitals,
-                    'departments'=>$departments);
+                    'specialities'=>$specialities);
         return view('pages.doctors')->with($data);
     }
 
@@ -126,6 +117,7 @@ class DoctorsController extends Controller
         $doctor->spec;
         $doctor->hospital;
         $doctor->spec->dept;
+        $doctor->schedule;
         // unset($doctor->spec_id);
         // unset($doctor->hospital_id);
         return view('pages.docprofile')->with('doctor',$doctor);

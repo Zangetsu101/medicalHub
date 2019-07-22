@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Doctor;
 use App\Appointment;
 use App\Patient;
+use App\Prescription;
+use App\Report;
 
 class AppointmentController extends Controller
 {
@@ -13,7 +15,7 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $doctor=Doctor::find($request->doctor);
-        return view('pages.appointment')->with('doctor',$doctor);
+        return view('pages.createappointment')->with('doctor',$doctor);
     }
 
     public function store(Request $request)
@@ -24,8 +26,8 @@ class AppointmentController extends Controller
         $date=$request->input('date');
         if(Appointment::where(['date'=>$date,'doc_id'=>$doctor->doc_id,
                                'patient_id'=>$patient->patient_id])->count()>0)
-            return "You already have an appointment on that day";
-        $serialNo=Appointment::where('date',$date)->max('serial_no');
+            return redirect('dashboard')->with('failure','You already have an appointment on that day with '.$doctor->name);
+        $serialNo=Appointment::where(['date'=>$date,'doc_id'=>$doctor->doc_id])->max('serial_no');
         if(!$serialNo)
             $serialNo=1;
         else
@@ -36,6 +38,11 @@ class AppointmentController extends Controller
         $appointment->doc_id=$doctor->doc_id;
         $appointment->patient_id=$patient->patient_id;
         $appointment->save();
-        return "Appointment added";
+        return redirect('dashboard')->with('success','Appointment Added!');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }
