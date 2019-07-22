@@ -41,7 +41,7 @@ class DashboardController extends Controller
         }
         else if($user->type==2)
         {
-            return view('pages.doctordashboard');
+            return view('pages.doctodayschedule');
         }
         
         else if($user->type==3)
@@ -96,7 +96,7 @@ class DashboardController extends Controller
         $user=auth()->user();
         $doctor=Doctor::find($user->foreign_id);
 
-        $emops=Emoperations::where('doc_id',$doctor->doc_id)->get();
+        $emops=Emoperations::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
 
         foreach($emops as $em)
             $em->patient;

@@ -5,7 +5,6 @@
 <div class="row">
     <div class="columns">
         <div class="vertical-menu">
-            <a href="{{route('dashboard')}}" >Home</a>
             <a href="{{route('doctodayschedule')}}">Today Schedule</a>
             <a href="{{route('admittedpatients')}}" >Admitted Patients</a>
             <a href="{{route('apptfortoday')}}">Upcoming Appointments</a>
