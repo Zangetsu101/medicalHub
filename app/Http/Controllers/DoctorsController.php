@@ -7,6 +7,7 @@ use App\Doctor;
 use App\Hospital;
 use App\Department;
 use App\Speciality;
+use App\Doctor_schedule;
 
 
 class DoctorsController extends Controller
@@ -52,9 +53,10 @@ class DoctorsController extends Controller
         $doctor->spec_id=$request->input('spec');
         $doctor->hospital_id=$request->input('hospital');
         $doctor->designation=$request->input('designation');
-        $doctor->start_time=$request->input('start');
+        //$doctor->start_time=$request->input('start');
         //$doctor->end_time=$request->input('endt');
-        //$doctor->room_no=$request->input('room');
+        $doctor->room_no=$request->input('room');
+        $doctor->fee=$request->input('fee');
         // return $doctor;
         
         $doctor->save();
@@ -181,7 +183,98 @@ class DoctorsController extends Controller
     public function doctorTiming(Request $request)
     {
         $doctor=Doctor::find($request->doctor);
-        //if($request->input('sun'))
+        //return $doctor;
+        
+        if($request->input('suns') && $request->input('sune'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Sunday";
+            $schedule->start_time=$request->input('suns');
+            $schedule->end_time=$request->input('sune');
+
+            $schedule->save();
+        }
+
+        if($request->input('mons'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Monday";
+            $schedule->start_time=$request->input('mons');
+            $schedule->end_time=$request->input('mone');
+
+            $schedule->save();
+        }
+
+        if($request->input('tues'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Tuesday";
+            $schedule->start_time=$request->input('tues');
+            $schedule->end_time=$request->input('tuee');
+
+            $schedule->save();
+        }
+
+        if($request->input('weds'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Wednesday";
+            $schedule->start_time=$request->input('weds');
+            $schedule->end_time=$request->input('wede');
+
+            $schedule->save();
+        }
+
+        if($request->input('thurs'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Thursday";
+            $schedule->start_time=$request->input('thurs');
+            $schedule->end_time=$request->input('thure');
+
+            $schedule->save();
+        }
+
+        if($request->input('fris'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Friday";
+            $schedule->start_time=$request->input('fris');
+            $schedule->end_time=$request->input('frie');
+
+            $schedule->save();
+        }
+
+        if($request->input('sats') && $request->input('sate'))
+        {
+            $schedule = new Doctor_schedule;
+            $id=count(Doctor_schedule::all())+1;
+            $schedule->schedule_id=$id;
+            $schedule->doc_id=$doctor->doc_id;
+            $schedule->day="Saturday";
+            $schedule->start_time=$request->input('sats');
+            $schedule->end_time=$request->input('sate');
+
+            $schedule->save();
+        }
         return redirect('dashboard');
     }
 }

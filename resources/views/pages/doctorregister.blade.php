@@ -58,7 +58,7 @@
                                 <select class="form-control" id="spec" name="spec">
                                     <option disabled selected> Select a speciality </option>
                                     @foreach($specialities as $spec)
-                                        <option value="{{$spec->spec_id}}">{{$spec->spec_name}}</option>
+                                        <option value="{{$spec->spec_id}}">{{$spec->spec_Name}}</option>
                                     @endforeach
                                 </select>
                                 @error('spec')
@@ -141,6 +141,21 @@
                                 <input id="room" type="text" class="form-control @error('room') is-invalid @enderror" name="room" value="{{ old('room') }}" required autocomplete="room" autofocus>
 
                                 @error('room')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{--fee--}}
+                        <div class="form-group row">
+                            <label for="fee" class="col-md-4 col-form-label text-md-right">{{ __('Fee') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="fee" type="number" class="form-control @error('fee') is-invalid @enderror" name="fee" value="{{ old('fee') }}" required autocomplete="fee" autofocus>
+
+                                @error('fee')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
