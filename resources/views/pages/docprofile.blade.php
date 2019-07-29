@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" href="{{asset('css/docprofile.css')}}">
+@endsection
+
 @section('content')
 
     <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_1.jpg');" data-stellar-background-ratio="0.5">
@@ -17,9 +21,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="{{asset('css/docprofile.css')}}">
 
     <section class="ftco-section">
         <div class="card">
@@ -50,5 +51,3 @@
     </section>
 
 @endsection
-
-

@@ -99,11 +99,12 @@
             </div>
         </div>
     </section>
-    @section('script')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        @include('footer')
-        <script src="{{asset('js/weightchart.js')}}"></script>
-        <script src="{{asset('js/bpchart.js')}}"></script>
-    @endsection
+@endsection
+
+@section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    @include('footer')
+    <script src="{{asset('js/weightchart.js')}}"></script>
+    <script src="{{asset('js/bpchart.js')}}"></script>
 @endsection
