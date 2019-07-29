@@ -28,12 +28,11 @@
             
             @foreach($appointments as $apt)
                 <tr>
-                    <td>{{$apt->appt_id}}</td>
+                    <td> <a href="{{route('prescriptioncreate',$apt->patient_id)}}">{{$apt->appt_id}}</a> </td>
                     <td> {{$apt->patient_id}} </td>    
                     <td> {{$apt->patient->name}} </td>      
                     <td> {{$apt->serial_no}} </td>  
                     <td> {{$apt->date}} </td>
-
                 </tr>
 
             @endforeach

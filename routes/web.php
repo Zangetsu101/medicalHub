@@ -52,3 +52,8 @@ Route::post('/hosreg', 'HospitalsController@create')->name('hospital.create');
 Route::get('/{doctor}/timingform', 'DoctorsController@timingForm')->name('timingform');
 
 Route::post('/{doctor}/timingform', 'DoctorsController@doctorTiming')->name('doctiming.create');
+
+Route::get('/patient-{patient}/prescriptioncreate', 'PrescriptionController@prescriptioncreate')->name('prescriptioncreate');
+
+Route::post('/patient-{patient}/prescriptioncreate','PrescriptionController@submitprescription')->name('prescription.create');
+
