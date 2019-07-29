@@ -83,6 +83,9 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                            @if(Auth::user()->type==1)
+                                <a class="dropdown-item" href="{{ route('patient.show',Auth::user()->foreign_id) }}">My Profile</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -107,10 +110,21 @@
                 </div>
             </div>
         </nav>
-		<!-- end nav -->
+        <!-- end nav -->
+        
+        <section class="hero-wrap hero-wrap-2" style="background-color: dodgerblue" data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-9 ftco-animate text-center">
+                        <p class="breadcrumbs">
+                            @yield('routes')
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 		
-		
-    
         @yield('content')
   
 

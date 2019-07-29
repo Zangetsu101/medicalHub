@@ -1,20 +1,12 @@
 @extends('layouts.app')
 
-@section('content')
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-2 bread">Dashboard</h1>
-                    <p class="breadcrumbs">
+@section('routes')
                         <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
                         <span>Dashboard <i class="ion-ios-arrow-forward"></i></span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+@endsection
+
+@section('content')
+
     @if (session('success'))
     <div class="alert alert-success alert-dismissible text-center">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

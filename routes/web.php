@@ -37,6 +37,12 @@ Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 
 Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');
 
+Route::get('/patient-{patient}','PatientsController@show')->name('patient.show');
+
+Route::get('/patient-{patient}/weights','PatientsController@showweights')->name('patient.weights');
+
+Route::get('/patient-{patient}/bps','PatientsController@showbps')->name('patient.bps');
+
 Route::post('/doctors/{doctor}/appointment','AppointmentController@store')->name('appointment.store');
 
 Route::get('/hospitals','PagesController@hospitals')->name('hospitals.index');

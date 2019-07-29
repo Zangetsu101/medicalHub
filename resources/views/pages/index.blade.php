@@ -1,4 +1,8 @@
 @extends('layouts.app')		
+
+@section('routes')
+                        <span>Home<i class="ion-ios-arrow-forward"></i></span>
+@endsection
 		
 @section('content')
     <section class="home-slider owl-carousel">
