@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Prescription;
+use App\Patient;
+use App\Doctor;
+use App\Appointment;
 
 class PrescriptionController extends Controller
 {
@@ -87,4 +90,33 @@ class PrescriptionController extends Controller
     {
         //
     }
+
+    public function prescriptioncreate(Request $request)
+    {
+        $patient=Patient::find($request->patient);
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+        $doctor->spec;
+        $doctor->hospital;
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+        foreach($appointments as $appointment)
+            $appointment->patient;
+        $data =array(
+            'doctor'=> $doctor,
+            'appointments' => $appointments,
+            'patients'=>$patient
+        );
+        return view('pages.prescriptioncreate')->with($data);
+
+    }
+
+
+    public function submitprescription(Request $request)
+    {
+       $pres=new Prescription;
+       $id=count(Prescription::all())+1;
+       $pres->prescription_id=$id;
+    }
+
+
 }
