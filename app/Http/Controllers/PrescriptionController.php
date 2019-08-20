@@ -15,6 +15,9 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
+
     public function index()
     {
         //
@@ -25,9 +28,23 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
+       $pres=new Prescription;
+
+       $id=count(Prescription::all())+1;
+       $pres->prescription_id=$id;
+       $pres->appt_id=$request->input('appt_id');
+       $pres->weight=$request->input('weight');
+       $pres->bp_low=$request->input('bplow');
+       $pres->bp_high=$request->input('bphigh');
+       $pres->cond=$request->input('complain');  
+
+       $pres->save();
+
+       return redirect()->route('upcomingappts');
+
     }
 
     /**
@@ -98,25 +115,22 @@ class PrescriptionController extends Controller
         $doctor=Doctor::find($user->foreign_id);
         $doctor->spec;
         $doctor->hospital;
-        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
-        foreach($appointments as $appointment)
-            $appointment->patient;
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')], ['patient_id','=',$patient->patient_id]])->get();
+
+        $ap=$appointments->first();
+
+
         $data =array(
             'doctor'=> $doctor,
-            'appointments' => $appointments,
+            'appointments' => $ap,
             'patients'=>$patient
         );
+
+       
         return view('pages.prescriptioncreate')->with($data);
 
     }
 
-
-    public function submitprescription(Request $request)
-    {
-       $pres=new Prescription;
-       $id=count(Prescription::all())+1;
-       $pres->prescription_id=$id;
-    }
 
 
 }

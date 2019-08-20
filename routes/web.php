@@ -55,5 +55,7 @@ Route::post('/{doctor}/timingform', 'DoctorsController@doctorTiming')->name('doc
 
 Route::get('/patient-{patient}/prescriptioncreate', 'PrescriptionController@prescriptioncreate')->name('prescriptioncreate');
 
-Route::post('/patient-{patient}/prescriptioncreate','PrescriptionController@submitprescription')->name('prescription.create');
+Route::post('/newprescription','PrescriptionController@create')->name('prescription.create');
+
+
 
