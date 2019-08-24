@@ -7,33 +7,29 @@
 
 @section('content')
 
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h2>Patient Name: {{$patient->name}}</h2>
-            </div>
-            <div class="row justify-content-center">
-                <p>Gender: @if($patient->gender=='m')
-                            Male
-                            @else  
-                                Female
-                            @endif
-                </p>
-            </div>
-            <div class="row justify-content-center">
-                <p>Date of Birth: {{$patient->dob}}</p>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card-box">
-                        <div class="card-header bg-primary text-white">{{ __('Weight Graph') }}</div>
-                        <div class="card-body">
-                            <canvas class="my-4 w-100" id="weight"></canvas>
-                            <a href="{{route('patient.weights',$patient->patient_id)}}" class="btn btn-primary stretched-link">Tabulate</a>
-                        </div>
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <h2>Patient Name: {{$patient->name}}</h2>
+        </div>
+        <div class="row justify-content-center">
+            <p>Gender: @if($patient->gender=='m')
+                        Male
+                        @else  
+                            Female
+                        @endif
+            </p>
+        </div>
+        <div class="row justify-content-center">
+            <p>Date of Birth: {{$patient->dob}}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-box">
+                    <div class="card-header bg-primary text-white">{{ __('Weight Graph') }}</div>
+                    <div class="card-body">
+                        <canvas class="my-4 w-100" id="weight"></canvas>
+                        <a href="{{route('patient.weights',$patient->patient_id)}}" class="btn btn-primary stretched-link">Tabulate</a>
                     </div>
-                </div>
-                <div class="col-md-6">
                     <div class="card-box">
                         <div class="card-header bg-primary text-white">{{ __('Blood Pressure Graph') }}</div>
                         <div class="card-body">
@@ -43,8 +39,25 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card-box">
+                    <div class="card-header bg-primary text-white">{{ __('Prescriptions') }}</div>
+                    <div class="card-body">
+                        <div class="list-group">
+                        @foreach($prescriptions as $prescription)
+                            <a href="{{route('prescription.show',$prescription->prescription_id)}}" class="list-group-item mb-2">
+                                <div class="row">
+                                    <div class="col-md-6">{{$prescription->appointment->date}}</div>  
+                                    <div class="col-md-6">{{$prescription->appointment->doctor->name}}</div>
+                                </div>
+                            </a>
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
 @endsection
 
