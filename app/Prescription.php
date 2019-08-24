@@ -8,6 +8,7 @@ class Prescription extends Model
 {
     //
     protected $primaryKey='prescription_id';
+    public $timestamps = false;
 
     public function appointment()
     {

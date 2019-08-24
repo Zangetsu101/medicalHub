@@ -112,6 +112,7 @@ class DashboardController extends Controller
          $data=array(
             'admittedpatients'=>$admittedpatients,
             'doctor'=>$doctor
+            
          );   
 
         
@@ -135,5 +136,7 @@ class DashboardController extends Controller
 
         return view('pages.emergencyops')->with($data);
     }
+
+
 
 }
