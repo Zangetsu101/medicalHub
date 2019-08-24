@@ -260,7 +260,7 @@ class PrescriptionController extends Controller
         $data =array(
             'doctor'=> $doctor,
             'appointments' => $ap,
-            'patients'=>$patient
+            'patient'=>$patient
         );
 
        

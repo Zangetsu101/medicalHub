@@ -23,11 +23,11 @@
         <div class="form-row">
 
             <div class="form-group col-md-4">
-                <label for="fname">Name: <b>{{$patients->name}}</b> </label> <br>
+            <label for="fname">Name: <b><a href="{{route('patient.show',$patient->patient_id)}}">{{$patient->name}}</a></b> </label> <br>
             </div>
 
             <div class="form-group col-md-4">
-                <label for="gender">Gender: <b>{{$patients->gender}}</b> </label>
+                <label for="gender">Gender: <b>{{$patient->gender}}</b> </label>
             </div>
 
             <div class="form-group col-md-4">
@@ -248,7 +248,7 @@
 
 
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </div>
 
     </form>

@@ -58,6 +58,25 @@ class AppointmentController extends Controller
         return redirect('dashboard')->with('success','Appointment Added!');
     }
 
+    public function destroy($id)
+    {
+        //
+        $appointment=Appointment::find($id);
+        $nextAppointments=Appointment::where(['date'=>$appointment->date,'doc_id'=>$appointment->doc_id,
+                                              ['serial_no','>',$appointment->serial_no]])->get();
+        if($appointment->delete())
+        {
+            foreach($nextAppointments as $appt)
+            {
+                $appt->serial_no--;
+                $appt->save();
+            }
+            return redirect('dashboard')->with('success','Appointment Deleted!');
+        }
+        else
+            return redirect('dashboard')->with('failure','Appointment Deletion Failed!');
+    }
+
     public function __construct()
     {
         $this->middleware('auth');

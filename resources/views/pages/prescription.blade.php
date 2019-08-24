@@ -24,7 +24,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                Blood Pressure:{{$prescription->bp_low}}/{{$prescription->bp_high}}
+                                <div class="col">
+                                    Blood Pressure:{{$prescription->bp_low}}/{{$prescription->bp_high}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -43,7 +45,9 @@
                             @foreach($reports as $report)
                                 <a href="{{route('report.show',['prescription'=>$prescription->prescription_id,
                                 'report'=>$report->report_id])}}" class="list-group-item mb-2">
-                                    <div class="row">{{$report->name}}</div>
+                                    <div class="row">
+                                        <div class="col">{{$report->name}}</div>
+                                    </div>
                                 </a>
                             @endforeach
                             </div>

@@ -66,8 +66,13 @@
                                         <div class="col-md-6">
                                             <a href="{{route('doctors.show',$appointment->doctor->doc_id)}}">{{$appointment->doctor->name}}</a>
                                         </div>
-                                        <div class="col-md-3">
-                                            {{$appointment->doctor->start_time}}
+                                        <div class="col-md-2">
+                                            {{$appointment->startTime()}}
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a onclick="return confirm('Are you sure?')" 
+                                               href="{{route('appointment.destroy',$appointment->appt_id)}}" 
+                                               class="btn btn-danger btn-sm text-white">X</a>
                                         </div>
                                     </div>
                                 </div>
