@@ -8,6 +8,7 @@ class Report extends Model
 {
     //
     protected $primaryKey='report_id';
+    public $timestamps = false;
 
     public function prescription()
     {
