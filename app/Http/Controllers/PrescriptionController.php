@@ -8,6 +8,7 @@ use App\Patient;
 use App\Doctor;
 use App\Appointment;
 use App\Medicine;
+use App\Report;
 
 class PrescriptionController extends Controller
 {
@@ -49,6 +50,7 @@ class PrescriptionController extends Controller
        $pres->cond=$request->input('complain');  
        $pres->save();
 
+       //medicine works
        
        if(!empty($request->input('m1')))
        {
@@ -178,6 +180,118 @@ class PrescriptionController extends Controller
            $med->duration=$request->input('d10');
            $med->dosage=$request->input('dos10');
            $med->save();
+       }
+
+       //test works
+
+       if(!empty($request->input('test1')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test1');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test2')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test2');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test3')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test3');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test4')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test4');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test5')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test5');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test6')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test6');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test7')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test7');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test8')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test8');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test9')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test9');
+         $rep->prescription_id=$id;
+         $rep->save();
+       }
+
+       if(!empty($request->input('test10')))
+       {
+         $rep=new Report;
+         $id3=count(Report::all())+1;
+
+         $rep->report_id=$id3;
+         $rep->name=$request->input('test10');
+         $rep->prescription_id=$id;
+         $rep->save();
        }
 
        return redirect()->route('upcomingappts');
