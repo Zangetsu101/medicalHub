@@ -43,12 +43,16 @@
                         <div class="card-body">
                             <div class="list-group">
                             @foreach($reports as $report)
+                                @if($report->location)
                                 <a href="{{route('report.show',['prescription'=>$prescription->prescription_id,
-                                'report'=>$report->report_id])}}" class="list-group-item mb-2">
-                                    <div class="row">
+                                'report'=>$report->report_id])}}">
+                                @endif
+                                    <div class="list-group-item mb-2 row">
                                         <div class="col">{{$report->name}}</div>
                                     </div>
+                                @if($report->location)
                                 </a>
+                                @endif
                             @endforeach
                             </div>
                         </div>
