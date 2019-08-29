@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('routes')
-                        <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span class="mr-2"><a href="{{route('dashboard')}}">Dashboard <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span>Prescription <i class="ion-ios-arrow-forward"></i></span>
+    <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span class="mr-2"><a href="{{route('dashboard')}}">Dashboard <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span>Prescription <i class="ion-ios-arrow-forward"></i></span>
 @endsection
 
 @section('content')
@@ -16,10 +16,17 @@
                         <div class="card-header bg-primary text-white">Basic Details</div>
                         <div class="card-body">
                             <div class="row">
-                                Weight:{{$prescription->weight}}
+                                <div class="col">
+                                    Weight:{{$prescription->weight}}
+                                </div>
+                                <div class="col text-right">
+                                    Date: {{$prescription->appointment->date}}
+                                </div>
                             </div>
                             <div class="row">
-                                Blood Pressure:{{$prescription->bp_low}}/{{$prescription->bp_high}}
+                                <div class="col">
+                                    Blood Pressure:{{$prescription->bp_low}}/{{$prescription->bp_high}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,10 +43,16 @@
                         <div class="card-body">
                             <div class="list-group">
                             @foreach($reports as $report)
+                                @if($report->location)
                                 <a href="{{route('report.show',['prescription'=>$prescription->prescription_id,
-                                'report'=>$report->report_id])}}" class="list-group-item mb-2">
-                                    <div class="row">{{$report->name}}</div>
+                                'report'=>$report->report_id])}}">
+                                @endif
+                                    <div class="list-group-item mb-2 row">
+                                        <div class="col">{{$report->name}}</div>
+                                    </div>
+                                @if($report->location)
                                 </a>
+                                @endif
                             @endforeach
                             </div>
                         </div>

@@ -37,6 +37,8 @@ Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 
 Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');
 
+Route::get('/appointment/{appointment}','AppointmentController@destroy')->name('appointment.destroy');
+
 Route::get('/patient-{patient}','PatientsController@show')->name('patient.show');
 
 Route::get('/patient-{patient}/weights','PatientsController@showweights')->name('patient.weights');
@@ -61,5 +63,7 @@ Route::post('/{doctor}/timingform', 'DoctorsController@doctorTiming')->name('doc
 
 Route::get('/patient-{patient}/prescriptioncreate', 'PrescriptionController@prescriptioncreate')->name('prescriptioncreate');
 
-Route::post('/patient-{patient}/prescriptioncreate','PrescriptionController@submitprescription')->name('prescription.create');
+Route::post('/newprescription','PrescriptionController@create')->name('prescription.create');
+
+
 

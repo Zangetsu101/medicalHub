@@ -68,7 +68,8 @@ class PatientsController extends Controller
             'bp_low' => $bp_low,
             'bp_high' => $bp_high
         ]);
-        return view('pages.patientprofile')->with('patient',$patient);
+        $data=array('patient'=>$patient,'prescriptions'=>$prescriptions);
+        return view('pages.patientprofile')->with($data);
     }
 
     public function showweights($id)
