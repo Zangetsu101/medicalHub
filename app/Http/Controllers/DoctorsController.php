@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Doctor;
 use App\Hospital;
 use App\Department;
 use App\Speciality;
+use App\User;
 use App\Doctor_schedule;
 
 
@@ -52,11 +54,23 @@ class DoctorsController extends Controller
         $doctor->spec_id=$request->input('spec');
         $doctor->hospital_id=$request->input('hospital');
         $doctor->designation=$request->input('designation');
-        //$doctor->start_time=$request->input('start');
-        //$doctor->end_time=$request->input('endt');
         $doctor->room_no=$request->input('room');
         $doctor->fee=$request->input('fee');
         // return $doctor;
+
+        $uid=count(User::all())+1;
+        $user=new User;
+        $user->id=$id;
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->type=2;
+        $user->foreign_id=$id;
+
+        $password = 12345678;
+        $hashedPassword = Hash::make($password);
+
+        $user->password=$hashedPassword;
+        $user->save();
         
         $doctor->save();
 
