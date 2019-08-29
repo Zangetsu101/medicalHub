@@ -53,6 +53,10 @@ Route::get('/docreg', 'DoctorsController@doctorRegister')->name('docreg');
 
 Route::post('/docreg', 'DoctorsController@create')->name('doctor.create');
 
+Route::get('/{doctor}/edit', 'DoctorsController@edit')->name('docedit');
+
+Route::post('/{doctor}/edit', 'DoctorsController@update')->name('docupdate');
+
 Route::get('/hosreg', 'HospitalsController@hospitalRegister')->name('hosreg');
 
 Route::post('/hosreg', 'HospitalsController@create')->name('hospital.create');

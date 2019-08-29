@@ -16,7 +16,7 @@
             <div class="col-md-6">
                 <div class="card-box">
                     <p class="button-custom order-lg-last mb-0"><a href="{{ route('docreg') }}" class="btn btn-secondary py-2 px-3">Register Doctor</a></p>
-                    <p class="button-custom order-lg-last mb-0"><a href="{{ route('hosreg') }}" class="btn btn-secondary py-2 px-3">Register Hospital</a>
+                    <p class="button-custom order-lg-last mb-0"><a href="{{ route('hosreg') }}" class="btn btn-secondary py-2 px-3">Register Hospital</a></p>
                 </div>
             </div>
         </div>

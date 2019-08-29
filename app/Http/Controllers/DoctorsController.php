@@ -57,6 +57,7 @@ class DoctorsController extends Controller
         $doctor->room_no=$request->input('room');
         $doctor->fee=$request->input('fee');
         // return $doctor;
+        $doctor->save();
 
         $uid=count(User::all())+1;
         $user=new User;
@@ -72,7 +73,6 @@ class DoctorsController extends Controller
         $user->password=$hashedPassword;
         $user->save();
         
-        $doctor->save();
 
         return redirect()->route('timingform', ['doctor'=> $id]);
     }
@@ -126,15 +126,17 @@ class DoctorsController extends Controller
      */
     public function show($id)
     {
-        //
+        $user=auth()->user();
+        
         $doctor=Doctor::find($id);
         $doctor->spec;
         $doctor->hospital;
         $doctor->spec->dept;
         $doctor->schedule;
-        // unset($doctor->spec_id);
-        // unset($doctor->hospital_id);
-        return view('pages.docprofile')->with('doctor',$doctor);
+
+        $data=array('doctor'=>$doctor, 'user'=>$user);
+
+        return view('pages.docprofile')->with($data);
     }
 
     /**
@@ -144,8 +146,12 @@ class DoctorsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {        
+        $doctor=Doctor::find($id);
+        $hospitals=Hospital::all();
+        $specialities=Speciality::all();
+        $data=array('doctor'=>$doctor,'hospitals'=>$hospitals,'specialities'=>$specialities);
+        return view('pages.doctoredit')->with($data);
     }
 
     /**
@@ -157,7 +163,19 @@ class DoctorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doctor=Doctor::find($id);
+        $doctor->name=$request->input('name');
+        $doctor->mobile=$request->input('mobile');
+        $doctor->email=$request->input('email');
+        $doctor->spec_id=$request->input('spec');
+        $doctor->hospital_id=$request->input('hospital');
+        $doctor->designation=$request->input('designation');
+        $doctor->room_no=$request->input('room');
+        $doctor->fee=$request->input('fee');
+
+        $doctor->save();
+
+        return redirect('dashboard');
     }
 
     /**
