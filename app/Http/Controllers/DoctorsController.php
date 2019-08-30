@@ -11,7 +11,6 @@ use App\Speciality;
 use App\User;
 use App\Doctor_schedule;
 
-
 class DoctorsController extends Controller
 {
     /**
@@ -36,7 +35,6 @@ class DoctorsController extends Controller
                     'specialities'=>$specialities);
         return view('pages.doctors')->with($data);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -127,12 +125,7 @@ class DoctorsController extends Controller
     public function show($id)
     {
         $user=auth()->user();
-        
         $doctor=Doctor::find($id);
-        $doctor->spec;
-        $doctor->hospital;
-        $doctor->spec->dept;
-        $doctor->schedule;
 
         $data=array('doctor'=>$doctor, 'user'=>$user);
 
@@ -222,7 +215,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('mons'))
+        if($request->input('mons') && $request->input('mone'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -235,7 +228,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('tues'))
+        if($request->input('tues') && $request->input('tuee'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -248,7 +241,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('weds'))
+        if($request->input('weds') && $request->input('wede'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -261,7 +254,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('thurs'))
+        if($request->input('thurs') && $request->input('thure'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -274,7 +267,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('fris'))
+        if($request->input('fris') && $request->input('frie'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;

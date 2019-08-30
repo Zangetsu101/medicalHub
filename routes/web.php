@@ -17,6 +17,8 @@ Route::resource('doctors','DoctorsController');
 
 Route::resource('departments','DepartmentsController');
 
+Route::resource('hospitals','HospitalsController');
+
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
@@ -53,10 +55,6 @@ Route::get('/docreg', 'DoctorsController@doctorRegister')->name('docreg');
 
 Route::post('/docreg', 'DoctorsController@create')->name('doctor.create');
 
-Route::get('/{doctor}/edit', 'DoctorsController@edit')->name('docedit');
-
-Route::post('/{doctor}/edit', 'DoctorsController@update')->name('docupdate');
-
 Route::get('/hosreg', 'HospitalsController@hospitalRegister')->name('hosreg');
 
 Route::post('/hosreg', 'HospitalsController@create')->name('hospital.create');
@@ -69,5 +67,11 @@ Route::get('/patient-{patient}/prescriptioncreate', 'PrescriptionController@pres
 
 Route::post('/newprescription','PrescriptionController@create')->name('prescription.create');
 
+Route::get('/hosedit/{hospital}', 'HospitalsController@edit')->name('hosedit');
 
+Route::post('/hosedit/{hospital}', 'HospitalsController@update')->name('hosupdate');
+
+Route::get('/docedit/{doctor}', 'DoctorsController@edit')->name('docedit');
+
+Route::post('/docedit/{doctor}', 'DoctorsController@update')->name('docupdate');
 
