@@ -35,22 +35,30 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card-box">
-                        <div class="card-header bg-primary text-white">Condition</div>
-                        <div class="card-body">{{$prescription->cond}}</div>
-                    </div>
-                    <div class="card-box">
-                        <div class="card-header bg-primary text-white">Reports</div>
+                        <div class="card-header bg-primary text-white">Symptoms</div>
                         <div class="card-body">
                             <div class="list-group">
-                            @foreach($reports as $report)
-                                @if($report->location)
-                                <a href="{{route('report.show',['prescription'=>$prescription->prescription_id,
-                                'report'=>$report->report_id])}}">
+                                @foreach($prescription->symptoms as $symptom)
+                                    <div class="list-group-item mb-2">
+                                        {{$symptom->name}}
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="card-header bg-primary text-white">Tests</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                            @foreach($tests as $test)
+                                @if($test->location)
+                                <a href="{{route('test.show',['prescription'=>$prescription->prescription_id,
+                                'test'=>$test->id])}}">
                                 @endif
                                     <div class="list-group-item mb-2 row">
-                                        <div class="col">{{$report->name}}</div>
+                                        <div class="col">{{$test->test->name}}</div>
                                     </div>
-                                @if($report->location)
+                                @if($test->location)
                                 </a>
                                 @endif
                             @endforeach
@@ -66,7 +74,7 @@
                             @foreach($medicines as $medicine)
                                 <div class="list-group-item mb-2">
                                     <div class="row">
-                                        <div class="col-md-4">{{$medicine->name}}</div>  
+                                        <div class="col-md-4">{{$medicine->medicine->name}}</div>  
                                         <div class="col-md-4">{{$medicine->duration}} Days</div>  
                                         <div class="col-md-4">{{$medicine->dosage}}</div>
                                     </div>

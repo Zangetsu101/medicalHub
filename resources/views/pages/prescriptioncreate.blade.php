@@ -10,8 +10,25 @@
 
 @section('content')
 
+<div id="app">
+    <prescription-form 
+        name="{{$patient->name}}"
+        gender="{{$patient->gender}}"
+        appt_id="{{$appointment->appt_id}}"
+        patient-route="{{route('patient.show',$patient->patient_id)}}"
+        submit-route="{{route('upcomingappts')}}"
+        avail-medicinesurl="{{route('avail_medicines.index')}}"
+        symptomsurl="{{route('symptoms.index')}}"
+        testsurl="{{route('tests.index')}}"
+        prescription-post="{{route('prescription.create')}}"
+        presmedicine-post="{{route('presmedicine.create')}}"
+        pressymp-post="{{route('pressymp.create')}}"
+        prestest-post="{{route('prestest.create')}}">
+    </prescription-form>
+</div>
 
-<div class="container" class="d-flex justify-content-center">
+
+{{-- <div class="container" class="d-flex justify-content-center">
 
     <form method="POST" action="{{route('prescription.create')}}">
         @csrf
@@ -33,8 +50,8 @@
             </div>
 
             <div class="form-group col-md-4">
-                <label for="gender">Appointment Id: <b>{{$appointments->appt_id}}</b> </label>
-                <input type="hidden" name="appt_id" value="{{$appointments->appt_id}}">
+                <label for="gender">Appointment Id: <b>{{$appointment->appt_id}}</b> </label>
+                <input type="hidden" name="appt_id" value="{{$appointment->appt_id}}">
             </div>
 
         </div>
@@ -347,6 +364,10 @@
 
     </form>
 
-</div>
+</div> --}}
 
+@endsection
+
+@section('script')
+<script src="{{asset('js/app.js')}}"></script>
 @endsection

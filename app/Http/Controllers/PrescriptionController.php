@@ -32,24 +32,16 @@ class PrescriptionController extends Controller
      */
     public function create(Request $request)
     {
-       $this->validate($request,[
-            'appt_id'=>'required',
-            'weight'=>'required',
-            'bplow'=>'required',
-            'bphigh'=>'required',
-            'complain'=>'required'
-       ]); 
+       
        $pres=new Prescription;
 
-       $id=count(Prescription::all())+1;
-       $pres->prescription_id=$id;
        $pres->appt_id=$request->input('appt_id');
        $pres->weight=$request->input('weight');
-       $pres->bp_low=$request->input('bplow');
-       $pres->bp_high=$request->input('bphigh');
-       $pres->cond=$request->input('complain');  
+       $pres->bp_low=$request->input('bpLow');
+       $pres->bp_high=$request->input('bpHigh');
        $pres->save();
 
+       return $pres;
        //medicine works
        
        if(!empty($request->input('m1')))
@@ -319,9 +311,12 @@ class PrescriptionController extends Controller
     {
         //
         $prescription=Prescription::find($id);
-        $reports=$prescription->reports;
-        $medicines=$prescription->medicines;
-        $data=array('prescription'=>$prescription,'reports'=>$reports,'medicines'=>$medicines);
+        $tests=$prescription->prescribedTests;
+        $medicines=$prescription->prescribedMedicines;
+        foreach($medicines as $medicine)
+          $medicine->medicine;
+        $prescription->symptoms;
+        $data=array('prescription'=>$prescription,'tests'=>$tests,'medicines'=>$medicines);
         return view('pages.prescription')->with($data);
     }
 
@@ -361,23 +356,23 @@ class PrescriptionController extends Controller
 
     public function prescriptioncreate(Request $request)
     {
-        $patient=Patient::find($request->patient);
-        $user=auth()->user();
-        $doctor=Doctor::find($user->foreign_id);
+        $appointment=Appointment::find($request->appointment);
+        $prescription=Prescription::where('appt_id',$appointment->appt_id)->first();
+        if($prescription)
+        {
+            return redirect()->route('prescription.show',$prescription->prescription_id);
+        }
+        $doctor=Doctor::find($appointment->doc_id);
         $doctor->spec;
         $doctor->hospital;
-        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')], ['patient_id','=',$patient->patient_id]])->get();
+        $patient=Patient::find($appointment->patient_id);
 
-        $ap=$appointments->first();
-
-
-        $data =array(
-            'doctor'=> $doctor,
-            'appointments' => $ap,
-            'patient'=>$patient
+        $data=array(
+          'doctor'=>$doctor,
+          'appointment'=>$appointment,
+          'patient'=>$patient
         );
 
-       
         return view('pages.prescriptioncreate')->with($data);
 
     }

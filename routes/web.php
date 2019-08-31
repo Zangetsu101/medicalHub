@@ -23,7 +23,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/dashboard/prescription-{prescription}','PrescriptionController@show')->name('prescription.show');
 
-Route::get('/dashboard/prescription-{prescription}/report-{report}','ReportController@show')->name('report.show');
+Route::get('/dashboard/prescription-{prescription}/test-{test}','TestController@show')->name('test.show');
 
 Route::get('/dashboard/upcomingevents', 'DashboardController@upcomingevents')->name('upcomingevents');
 
@@ -61,9 +61,7 @@ Route::get('/{doctor}/timingform', 'DoctorsController@timingForm')->name('timing
 
 Route::post('/{doctor}/timingform', 'DoctorsController@doctorTiming')->name('doctiming.create');
 
-Route::get('/patient-{patient}/prescriptioncreate', 'PrescriptionController@prescriptioncreate')->name('prescriptioncreate');
-
-Route::post('/newprescription','PrescriptionController@create')->name('prescription.create');
+Route::get('/appointment-{appointment}/prescriptioncreate', 'PrescriptionController@prescriptioncreate')->name('prescriptioncreate');
 
 
 

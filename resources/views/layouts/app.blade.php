@@ -9,9 +9,6 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -145,8 +142,6 @@
         <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
         <script src="{{asset('js/jquery.timepicker.min.js')}}"></script>
         <script src="{{asset('js/scrollax.min.js')}}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="{{asset('js/google-map.js')}}"></script>
         <script src="{{asset('js/main.js')}}"></script>
         @yield('script')
     </body>

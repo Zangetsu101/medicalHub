@@ -15,13 +15,20 @@ class Prescription extends Model
         return $this->belongsTo('App\Appointment','appt_id','appt_id');
     }
 
-    public function medicines()
+    public function prescribedMedicines()
     {
-        return $this->hasMany('App\Medicine','prescription_id','prescription_id');
+        return $this->hasMany('App\PrescribedMedicine','prescription_id','prescription_id');
     }
 
-    public function reports()
+    public function prescribedTests()
     {
-        return $this->hasMany('App\Report','prescription_id','prescription_id');
+        return $this->hasMany('App\PrescribedTest','prescription_id','prescription_id');
+    }
+
+    public function symptoms()
+    {
+        // return $this->hasMany('App\Symptom','')
+        return $this->hasManyThrough('App\Symptom','App\PrescriptionSymptom',
+                                     'prescription_id','id','prescription_id','symptom_id');
     }
 }

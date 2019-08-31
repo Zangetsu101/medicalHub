@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Medicine extends Model
+class Symptom extends Model
 {
     //
     public $timestamps=false;
