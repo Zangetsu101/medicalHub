@@ -102,37 +102,7 @@
                                 @enderror
                             </div>
                         </div>
-
-                        {{-- Start time
-                        <div class="form-group row">
-                            <label for="start" class="col-md-4 col-form-label text-md-right">{{ __('Start time') }}</label>
-
-                            <div class="col-md-6">
-                                    <input id="start" type="time" class="form-control @error('start') is-invalid @enderror" name="start" value="{{ old('start') }}" required autocomplete="start" autofocus>
-
-                                @error('start')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        End time
-                        <div class="form-group row">
-                            <label for="endt" class="col-md-4 col-form-label text-md-right">{{ __('End time') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="endt" type="time" class="form-control @error('endt') is-invalid @enderror" name="endt" value="{{ old('endt') }}" required autocomplete="endt" autofocus>
-
-                                @error('endt')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div> --}}
-
+                        
                         {{-- room number --}}
                         <div class="form-group row">
                             <label for="room" class="col-md-4 col-form-label text-md-right">{{ __('Room no.') }}</label>

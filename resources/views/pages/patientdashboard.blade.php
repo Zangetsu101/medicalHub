@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('routes')
-                        <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span>Dashboard <i class="ion-ios-arrow-forward"></i></span>
+    <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span>Dashboard <i class="ion-ios-arrow-forward"></i></span>
 @endsection
 
 @section('content')
@@ -26,14 +26,15 @@
                         <div class="card-header bg-primary text-white">{{ __('Previous Appointments:') }}</div>
                         <div class="card-body">
                             <div class="list-group">
-                            @foreach($prescriptions as $prescription)
-                                <a href="{{route('prescription.show',$prescription->prescription_id)}}" class="list-group-item mb-2">
-                                    <div class="row">
-                                        <div class="col-md-6">{{$prescription->appointment->date}}</div>  
-                                        <div class="col-md-6">{{$prescription->appointment->doctor->name}}</div>
-                                    </div>
-                                </a>
-                            @endforeach
+                                @foreach($prescriptions as $prescription)
+                                    <div class="list-group-item mb-2">
+                                        <div class="row">
+                                            <div class="col-md-5"><a href="{{route('prescription.show',$prescription->prescription_id)}}">{{$prescription->appointment->date}}</a></div>
+                                            <div class="col-md-5">{{$prescription->appointment->doctor->name}}</div>
+                                            <div class="col-md-2"><a href="{{route('ratingform', $prescription->appt_id)}}" type="button btn-primary py-2 px-3">Rate</a></div>
+                                        </div>
+                                    </div>   
+                                @endforeach
                             </div>
                        </div>
                     </div>
@@ -95,6 +96,8 @@
                 </div>
             </div>
         </div>
+
+        
     </section>
 @endsection
 

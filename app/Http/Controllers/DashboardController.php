@@ -136,7 +136,4 @@ class DashboardController extends Controller
 
         return view('pages.emergencyops')->with($data);
     }
-
-
-
 }

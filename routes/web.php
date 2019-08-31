@@ -75,3 +75,6 @@ Route::get('/docedit/{doctor}', 'DoctorsController@edit')->name('docedit');
 
 Route::post('/docedit/{doctor}', 'DoctorsController@update')->name('docupdate');
 
+Route::get('/{appointment}/rating', 'RatingController@index')->name('ratingform');
+
+Route::post('/{appointment}/rating', 'RatingController@create')->name('ratingsubmission');
