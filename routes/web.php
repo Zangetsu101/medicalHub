@@ -27,7 +27,7 @@ Route::get('/dashboard/prescription-{prescription}/report-{report}','ReportContr
 
 Route::get('/dashboard/upcomingevents', 'DashboardController@upcomingevents')->name('upcomingevents');
 
-Route::get('/dashboard/upcomingappts', 'DashboardController@upcomingappts')->name('upcomingappts');
+Route::get('/dashboard/todayappts', 'DashboardController@todayappts')->name('todayappts');
 
 Route::get('/dashboard/admittedpatients', 'DashboardController@admittedpatients')->name('admittedpatients');
 

@@ -11,7 +11,7 @@
         <div class="vertical-menu">
             <a href="{{route('upcomingevents')}}" >Upcoming Events</a>
             <a href="{{route('admittedpatients')}}">Admitted Patients</a>
-            <a href="{{route('upcomingappts')}}" class="active">Upcoming Appointments</a>
+            <a href="{{route('todayappts')}}" class="active">Today Appointments</a>
             <a href="{{route('emergencyops')}}">Upcoming Emergency Operations</a>
         </div>
     </div>
@@ -23,7 +23,6 @@
                 <th>Patient Id</th>
                 <th>Patient Name</th>
                 <th>Serial No</th>
-                <th>Date</th>
             </tr>
             
             @foreach($appointments as $apt)
@@ -32,7 +31,6 @@
                     <td> {{$apt->patient_id}} </td>    
                     <td> <a href="{{route('patient.show',$apt->patient_id)}}">{{$apt->patient->name}}</a> </td>      
                     <td> {{$apt->serial_no}} </td>  
-                    <td> {{$apt->date}} </td>
                 </tr>
 
             @endforeach

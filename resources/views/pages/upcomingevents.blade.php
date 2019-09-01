@@ -11,7 +11,7 @@
         <div class="vertical-menu">
             <a href="{{route('upcomingevents')}}" class="active">Upcoming Events</a>
             <a href="{{route('admittedpatients')}}">Admitted Patients</a>
-            <a href="{{route('upcomingappts')}}">Upcoming Appointments</a>
+            <a href="{{route('todayappts')}}">Today Appointments</a>
             <a href="{{route('emergencyops')}}">Upcoming Emergency Operations</a>
         </div>
     </div>
