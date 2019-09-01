@@ -49,7 +49,7 @@ class PatientsController extends Controller
     {
         //
         $patient=Patient::find($id);
-        $prescriptions=$patient->prescriptions;
+        $prescriptions=$patient->prescriptions()->paginate(10);
         $dates=array();
         $weights=array();
         $bp_low=array();

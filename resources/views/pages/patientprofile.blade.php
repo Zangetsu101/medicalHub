@@ -53,6 +53,7 @@
                             </a>
                         @endforeach
                         </div>
+                        <div>{{$prescriptions->links()}}</div>
                     </div>
                 </div>
             </div>
