@@ -1931,6 +1931,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['name', 'gender', 'appt_id', 'patientRoute', 'submitRoute', 'availMedicinesurl', 'symptomsurl', 'testsurl', 'prescriptionPost', 'presmedicinePost', 'pressympPost', 'prestestPost'],
@@ -2149,8 +2175,20 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
-    isValid: function isValid() {
+    isFormValid: function isFormValid() {
       if (!this.weight || !this.bpLow || !this.bpHigh) return false;
+      return true;
+    },
+    isTestValid: function isTestValid() {
+      if (!this.test.name) return false;
+      return true;
+    },
+    isSymptomValid: function isSymptomValid() {
+      if (!this.symptom.name) return false;
+      return true;
+    },
+    isMedicineValid: function isMedicineValid() {
+      if (!this.medicine.name || !this.duration || !this.dosage) return false;
       return true;
     }
   }
@@ -37727,18 +37765,42 @@ var render = function() {
                 _vm._v("Symptoms")
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-body list-group" },
-                _vm._l(_vm.addedSymptoms, function(symtom, index) {
-                  return _c(
-                    "div",
-                    { key: index, staticClass: "list-group-item" },
-                    [_vm._v(_vm._s(symtom.name))]
-                  )
-                }),
-                0
-              )
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.addedSymptoms, function(symtom, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "list-group-item" },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col" }, [
+                            _vm._v(_vm._s(symtom.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-1" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger btn-sm",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.addedSymptoms.splice(index, 1)
+                                  }
+                                }
+                              },
+                              [_vm._v("X")]
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("auto-complete", {
@@ -37761,6 +37823,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
+                  attrs: { disabled: !_vm.isSymptomValid },
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -37777,18 +37840,42 @@ var render = function() {
                 _vm._v("Tests")
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-body list-group" },
-                _vm._l(_vm.addedTests, function(test, index) {
-                  return _c(
-                    "div",
-                    { key: index, staticClass: "list-group-item" },
-                    [_vm._v(_vm._s(test.name))]
-                  )
-                }),
-                0
-              )
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.addedTests, function(test, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "list-group-item" },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col" }, [
+                            _vm._v(_vm._s(test.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-1" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger btn-sm",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.addedTests.splice(index, 1)
+                                  }
+                                }
+                              },
+                              [_vm._v("X")]
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("auto-complete", {
@@ -37807,6 +37894,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary mb-2",
+                  attrs: { disabled: !_vm.isTestValid },
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -37827,32 +37915,50 @@ var render = function() {
               _vm._v("Medicines")
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-body list-group" },
-              _vm._l(_vm.addedMedicines, function(medicine, index) {
-                return _c(
-                  "div",
-                  { key: index, staticClass: "list-group-item" },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col" }, [
-                        _vm._v(_vm._s(medicine.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col" }, [
-                        _vm._v(_vm._s(medicine.duration))
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col" }, [
-                        _vm._v(_vm._s(medicine.dosage))
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "div",
+                { staticClass: "list-group" },
+                _vm._l(_vm.addedMedicines, function(medicine, index) {
+                  return _c(
+                    "div",
+                    { key: index, staticClass: "list-group-item" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col" }, [
+                          _vm._v(_vm._s(medicine.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col" }, [
+                          _vm._v(_vm._s(medicine.duration) + " Days")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col" }, [
+                          _vm._v(_vm._s(medicine.dosage))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-1" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger btn-sm",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.addedMedicines.splice(index, 1)
+                                }
+                              }
+                            },
+                            [_vm._v("X")]
+                          )
+                        ])
                       ])
-                    ])
-                  ]
-                )
-              }),
-              0
-            )
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-row" }, [
@@ -37888,7 +37994,7 @@ var render = function() {
                     expression: "duration"
                   }
                 ],
-                attrs: { type: "text", placeholder: "Duration" },
+                attrs: { type: "text", placeholder: "Duration(Days)" },
                 domProps: { value: _vm.duration },
                 on: {
                   input: function($event) {
@@ -37930,6 +38036,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-primary",
+                attrs: { disabled: !_vm.isMedicineValid },
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -37948,7 +38055,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-primary mb-2 ml-auto",
-            class: { disabled: !_vm.isValid },
+            class: { disabled: !_vm.isFormValid },
             attrs: { href: _vm.submitRoute },
             on: {
               click: function($event) {

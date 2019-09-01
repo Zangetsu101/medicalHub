@@ -40,9 +40,18 @@
                 <div class="col-md-5">
                     <div class="card-box">
                         <div class="card-header bg-primary text-white">Symptoms</div>
-                        <div class="card-body list-group">
-                            <div v-for="(symtom,index) in addedSymptoms" class="list-group-item"
-                                v-bind:key="index">{{symtom.name}}</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <div v-for="(symtom,index) in addedSymptoms" class="list-group-item"
+                                    v-bind:key="index">
+                                    <div class="row">
+                                        <div class="col">{{symtom.name}}</div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-danger btn-sm" v-on:click.prevent="addedSymptoms.splice(index,1)">X</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <auto-complete v-model="symptom" 
@@ -50,13 +59,23 @@
                                     field="name"
                                     placeholder="Symptom"></auto-complete>
                     <div class="d-flex flex-row-reverse">
-                        <button class="btn btn-primary" v-on:click.prevent="addSymptom">Add</button>
+                        <button v-on:click.prevent="addSymptom" class="btn btn-primary"
+                                v-bind:disabled="!isSymptomValid">Add</button>
                     </div>
                     <div class="card-box mt-2">
                         <div class="card-header bg-primary text-white">Tests</div>
-                        <div class="card-body list-group">
-                            <div v-for="(test,index) in addedTests" class="list-group-item"
-                                 v-bind:key="index">{{test.name}}</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <div v-for="(test,index) in addedTests" class="list-group-item"
+                                    v-bind:key="index">
+                                    <div class="row">
+                                        <div class="col">{{test.name}}</div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-danger btn-sm" v-on:click.prevent="addedTests.splice(index,1)">X</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <auto-complete v-model="test" 
@@ -64,19 +83,25 @@
                                     field="name"
                                     placeholder="Test"></auto-complete>
                     <div class="d-flex flex-row-reverse">
-                        <button class="btn btn-primary mb-2" v-on:click.prevent="addTest">Add</button>
+                        <button v-on:click.prevent="addTest" class="btn btn-primary mb-2"
+                                v-bind:disabled="!isTestValid">Add</button>
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="card-box">
                         <div class="card-header bg-primary text-white">Medicines</div>
-                        <div class="card-body list-group">
-                            <div v-for="(medicine,index) in addedMedicines" class="list-group-item"
-                                    v-bind:key="index">
-                                <div class="row">
-                                    <div class="col">{{medicine.name}}</div>
-                                    <div class="col">{{medicine.duration}}</div>
-                                    <div class="col">{{medicine.dosage}}</div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <div v-for="(medicine,index) in addedMedicines" class="list-group-item"
+                                        v-bind:key="index">
+                                    <div class="row">
+                                        <div class="col">{{medicine.name}}</div>
+                                        <div class="col">{{medicine.duration}} Days</div>
+                                        <div class="col">{{medicine.dosage}}</div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-danger btn-sm" v-on:click.prevent="addedMedicines.splice(index,1)">X</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,21 +114,22 @@
                                             placeholder="Medicine Name"></auto-complete>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" placeholder="Duration" v-model="duration">
+                            <input type="text" placeholder="Duration(Days)" v-model="duration">
                         </div>
                         <div class="col-md-3">
                             <input type="text" placeholder="Dosage" v-model="dosage">
                         </div>
                     </div>
                     <div class="d-flex flex-row-reverse">
-                        <button class="btn btn-primary" v-on:click.prevent="addMedicine">Add</button>
+                        <button v-on:click.prevent="addMedicine" class="btn btn-primary"
+                                v-bind:disabled="!isMedicineValid">Add</button>
                     </div>
                 </div>
             </div>
             <div class="d-flex">
                 <a v-bind:href="submitRoute" class="btn btn-primary mb-2 ml-auto" 
                    v-on:click="submitForm($event)"
-                   v-bind:class="{'disabled':!isValid}">Submit</a>
+                   v-bind:class="{'disabled':!isFormValid}">Submit</a>
             </div>
         </form>
     </div>
@@ -328,8 +354,23 @@ export default {
         }
     },
     computed: {
-        isValid() {
+        isFormValid() {
             if(!this.weight||!this.bpLow||!this.bpHigh)
+                return false;
+            return true;
+        },
+        isTestValid() {
+            if(!this.test.name)
+                return false;
+            return true;
+        },
+        isSymptomValid() {
+            if(!this.symptom.name)
+                return false;
+            return true;
+        },
+        isMedicineValid() {
+            if(!this.medicine.name||!this.duration||!this.dosage)
                 return false;
             return true;
         }
