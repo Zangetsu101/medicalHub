@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('routes')
-                        <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span class="mr-2"><a href="{{route('dashboard')}}">Dashboard <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span class="mr-2"><a href="{{route('prescription.show',$test->prescription_id)}}">Prescription <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span>Report <i class="ion-ios-arrow-forward"></i></span>
+    <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span class="mr-2"><a href="{{route('dashboard')}}">Dashboard <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span class="mr-2"><a href="{{route('prescription.show',$report->prescription_id)}}">Prescription <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span>Report <i class="ion-ios-arrow-forward"></i></span>
 @endsection
 
 @section('content')

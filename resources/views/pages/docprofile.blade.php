@@ -5,13 +5,12 @@
 @endsection
 
 @section('routes')
-                        <span class="mr-2"><a href="{{ route('/') }}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span class="mr-2"><a href="{{ route('doctors.index') }}">Doctors <i class="ion-ios-arrow-forward"></i></a></span> 
-                        <span>{{$doctor->name}} <i class="ion-ios-arrow-forward"></i></span>
+    <span class="mr-2"><a href="{{ route('/') }}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span class="mr-2"><a href="{{ route('doctors.index') }}">Doctors <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span>{{$doctor->name}} <i class="ion-ios-arrow-forward"></i></span>
 @endsection
 
 @section('content')
-
     <section class="ftco-section">
         <div class="card">
             <img src="{{asset($doctor->image_url)}}">
@@ -36,7 +35,14 @@
                     Room No: {{ $doctor->room_no }} <br>
                     {{$doctor->hospital->name}}
             </p>
-            <p class="button-custom order-lg-last mb-0"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
+            <p class="button-custom order-lg-last"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
+            @guest
+            
+            @else
+                @if($user->type==3)
+                    <p class="button-custom order-lg-last mt-2"><a href="{{ route('docedit', $doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Edit Profile</a></p>
+                @endif
+            @endguest
         </div>
     </section>
 

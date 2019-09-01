@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Doctor;
 use App\Hospital;
 use App\Department;
 use App\Speciality;
+use App\User;
 use App\Doctor_schedule;
-
 
 class DoctorsController extends Controller
 {
@@ -35,7 +36,6 @@ class DoctorsController extends Controller
         return view('pages.doctors')->with($data);
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,13 +52,25 @@ class DoctorsController extends Controller
         $doctor->spec_id=$request->input('spec');
         $doctor->hospital_id=$request->input('hospital');
         $doctor->designation=$request->input('designation');
-        //$doctor->start_time=$request->input('start');
-        //$doctor->end_time=$request->input('endt');
         $doctor->room_no=$request->input('room');
         $doctor->fee=$request->input('fee');
         // return $doctor;
-        
         $doctor->save();
+
+        $uid=count(User::all())+1;
+        $user=new User;
+        $user->id=$id;
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->type=2;
+        $user->foreign_id=$id;
+
+        $password = 12345678;
+        $hashedPassword = Hash::make($password);
+
+        $user->password=$hashedPassword;
+        $user->save();
+        
 
         return redirect()->route('timingform', ['doctor'=> $id]);
     }
@@ -112,15 +124,12 @@ class DoctorsController extends Controller
      */
     public function show($id)
     {
-        //
+        $user=auth()->user();
         $doctor=Doctor::find($id);
-        $doctor->spec;
-        $doctor->hospital;
-        $doctor->spec->dept;
-        $doctor->schedule;
-        // unset($doctor->spec_id);
-        // unset($doctor->hospital_id);
-        return view('pages.docprofile')->with('doctor',$doctor);
+
+        $data=array('doctor'=>$doctor, 'user'=>$user);
+
+        return view('pages.docprofile')->with($data);
     }
 
     /**
@@ -130,8 +139,12 @@ class DoctorsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {        
+        $doctor=Doctor::find($id);
+        $hospitals=Hospital::all();
+        $specialities=Speciality::all();
+        $data=array('doctor'=>$doctor,'hospitals'=>$hospitals,'specialities'=>$specialities);
+        return view('pages.doctoredit')->with($data);
     }
 
     /**
@@ -143,7 +156,19 @@ class DoctorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doctor=Doctor::find($id);
+        $doctor->name=$request->input('name');
+        $doctor->mobile=$request->input('mobile');
+        $doctor->email=$request->input('email');
+        $doctor->spec_id=$request->input('spec');
+        $doctor->hospital_id=$request->input('hospital');
+        $doctor->designation=$request->input('designation');
+        $doctor->room_no=$request->input('room');
+        $doctor->fee=$request->input('fee');
+
+        $doctor->save();
+
+        return redirect('dashboard');
     }
 
     /**
@@ -190,7 +215,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('mons'))
+        if($request->input('mons') && $request->input('mone'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -203,7 +228,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('tues'))
+        if($request->input('tues') && $request->input('tuee'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -216,7 +241,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('weds'))
+        if($request->input('weds') && $request->input('wede'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -229,7 +254,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('thurs'))
+        if($request->input('thurs') && $request->input('thure'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;
@@ -242,7 +267,7 @@ class DoctorsController extends Controller
             $schedule->save();
         }
 
-        if($request->input('fris'))
+        if($request->input('fris') && $request->input('frie'))
         {
             $schedule = new Doctor_schedule;
             $id=count(Doctor_schedule::all())+1;

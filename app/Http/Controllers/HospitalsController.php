@@ -55,9 +55,14 @@ class HospitalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($hospital_id)
     {
-        //
+        $user=auth()->user();
+        $hospital=Hospital::find($hospital_id);
+
+        $data=array('hospital'=>$hospital, 'user'=>$user);
+
+        return view('pages.hospitalprofile')->with($data);
     }
 
     /**
@@ -68,7 +73,8 @@ class HospitalsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hospital=Hospital::find($id);
+        return view('pages.hospitaledit')->with('hospital', $hospital);
     }
 
     /**
@@ -80,7 +86,15 @@ class HospitalsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hospital=Hospital::find($id);
+        $hospital->name=$request->input('name');
+        $hospital->address=$request->input('address');
+        $hospital->mobile=$request->input('mobile');
+        $hospital->license_no=$request->input('license');
+        
+        $hospital->save();
+
+        return redirect('dashboard');
     }
 
     /**

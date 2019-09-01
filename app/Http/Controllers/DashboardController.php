@@ -63,11 +63,11 @@ class DashboardController extends Controller
             ]);
             return view('pages.patientdashboard')->with($data);
         }
-        else if($user->type==2)
+        else if($user->type==2) //for doctors
         {
             return redirect()->route('upcomingevents');
         }
-        else if($user->type==3)
+        else if($user->type==3) //for admins
         {
             $admin=auth()->user();
             return view('pages.admindashboard')->with('admin', $admin);
@@ -136,7 +136,4 @@ class DashboardController extends Controller
 
         return view('pages.emergencyops')->with($data);
     }
-
-
-
 }
