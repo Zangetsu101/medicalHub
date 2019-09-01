@@ -57,6 +57,7 @@ class RatingController extends Controller
         $curid=count(Rating::all())+1;
         $appointment=Appointment::find($id);
         $appt=$appointment->appt_id;
+        $now=now()->toDateTimeString('Y-m-d') ;
 
         $rating = new Rating;
         $rating->rating_id=$curid;
@@ -66,6 +67,7 @@ class RatingController extends Controller
         $rating->of_user=$request->input('ofuser');
         $rating->by_user=$request->input('byuser');        
         $rating->appt_id=$appt;
+        $rating->updated=$now;
 
         //return $rating;
         $rating->save();

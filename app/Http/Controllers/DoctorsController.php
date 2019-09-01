@@ -10,6 +10,7 @@ use App\Department;
 use App\Speciality;
 use App\User;
 use App\Doctor_schedule;
+use App\Rating;
 
 class DoctorsController extends Controller
 {
@@ -126,9 +127,32 @@ class DoctorsController extends Controller
     {
         $user=auth()->user();
         $doctor=Doctor::find($id);
+        
+        $doc_user=User::where([
+            ['type','=','2'],
+            ['foreign_id', '=', $doctor->doc_id],
+            ])->get()->first();
+        
+        $doc_user_id = $doc_user->id;
 
-        $data=array('doctor'=>$doctor, 'user'=>$user);
+        $ratings=Rating::where([
+            ['of_user', '=', $doc_user_id]
+        ])->get();
 
+        $rating_count = count($ratings);
+        $rating_sum = 0.0;
+        $rating = 0.0;
+        
+        if($rating_count != 0){
+            foreach($ratings as $item){
+                $rating_sum = $rating_sum+$item->rating_value;
+            }
+            $rating = $rating_sum/$rating_count;
+        }
+
+        //return $rating;
+        $rating = round($rating, 3);
+        $data=array('doctor'=>$doctor, 'user'=>$user, 'rating'=>$rating);
         return view('pages.docprofile')->with($data);
     }
 
