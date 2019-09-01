@@ -74,20 +74,20 @@ class DashboardController extends Controller
         }
     }
 
-    public function upcomingappts()
+    public function todayappts()
     {
         $user=auth()->user();
         $doctor=Doctor::find($user->foreign_id);
         $doctor->spec;
         $doctor->hospital;
-        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','=',Date('Y/m/d')]])->get();
         foreach($appointments as $appointment)
             $appointment->patient;
         $data =array(
             'doctor'=> $doctor,
             'appointments' => $appointments
         );
-        return view('pages.upcomingappts')->with($data);
+        return view('pages.todayappts')->with($data);
     }
 
     public function upcomingevents()
