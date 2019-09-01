@@ -31,6 +31,8 @@ Route::get('/dashboard/upcomingevents', 'DashboardController@upcomingevents')->n
 
 Route::get('/dashboard/todayappts', 'DashboardController@todayappts')->name('todayappts');
 
+Route::get('/dashboard/previousappts', 'DashboardController@previousappts')->name('previousappts');
+
 Route::get('/dashboard/admittedpatients', 'DashboardController@admittedpatients')->name('admittedpatients');
 
 Route::get('/dashboard/emergencyops', 'DashboardController@emergencyops')->name('emergencyops');

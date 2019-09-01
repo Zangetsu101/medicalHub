@@ -12,6 +12,7 @@
             <a href="{{route('admittedpatients')}}" class="active">Admitted Patients</a>
             <a href="{{route('todayappts')}}">Today Appointments</a>
             <a href="{{route('emergencyops')}}">Upcoming Emergency Operations</a>
+            <a href="{{route('previousappts')}}">Previous Patients</a>
         </div>
     </div>
 

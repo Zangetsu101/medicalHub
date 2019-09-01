@@ -16,7 +16,7 @@
         gender="{{$patient->gender}}"
         appt_id="{{$appointment->appt_id}}"
         patient-route="{{route('patient.show',$patient->patient_id)}}"
-        submit-route="{{route('upcomingappts')}}"
+        submit-route="{{route('todayappts')}}"
         avail-medicinesurl="{{route('avail_medicines.index')}}"
         symptomsurl="{{route('symptoms.index')}}"
         testsurl="{{route('tests.index')}}"

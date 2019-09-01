@@ -80,7 +80,7 @@ class DashboardController extends Controller
         $doctor=Doctor::find($user->foreign_id);
         $doctor->spec;
         $doctor->hospital;
-        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','=',Date('Y/m/d')]])->get();
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','=',Date('Y/m/d')]])->paginate(10);
         foreach($appointments as $appointment)
             $appointment->patient;
         $data =array(
@@ -88,6 +88,37 @@ class DashboardController extends Controller
             'appointments' => $appointments
         );
         return view('pages.todayappts')->with($data);
+    }
+
+    public function previousappts()
+    {
+        $user=auth()->user();
+        $doctor=Doctor::find($user->foreign_id);
+        $doctor->spec;
+        $doctor->hospital;
+        $prescriptions= Prescription::all();
+        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','<',Date('Y/m/d')]])->orderBy('date','DESC')->paginate(10);
+        
+        // foreach($appointments as $appointment)
+        // {
+        //     $temp=Prescription::find($appointment->appt_id);
+
+        //     if (is_array($temp))
+        //     {
+        //         continue;
+        //     }
+        //     $appointments->forget($appointment->appt_id);
+        //     $appointments->all();
+        // }
+
+        
+        foreach($appointments as $appointment)
+            $appointment->patient;
+        $data =array(
+            'doctor'=> $doctor,
+            'appointments' => $appointments
+        );
+        return view('pages.previousappts')->with($data);
     }
 
     public function upcomingevents()
