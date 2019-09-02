@@ -24,25 +24,31 @@ class RatingController extends Controller
             ['foreign_id', '=', $appointment->doc_id],
             ])->get()->first();
         $doc_user_id=$doctor->id;
+        $doc_user_name=$doctor->name;    
 
         $patient=User::where([
             ['type','=','1'],
             ['foreign_id', '=', $appointment->patient_id],
         ])->get()->first();
         $patient_user_id=$patient->id;
+        $patient_user_name=$patient->name;
 
         if($user->type==1) //patient giving ratings
         {
             $byuser = $patient_user_id;
             $ofuser = $doc_user_id;
+            $byusername=$patient_user_name;
+            $ofusername=$doc_user_name;
         }
         else if($user->type==2) //doctor giving ratings
         {
             $byuser = $doc_user_id;
             $ofuser = $patient_user_id;
+            $byusername=$doc_user_name;
+            $ofusername=$patient_user_name;
         }
 
-        $data=array('ofuser'=>$ofuser, 'byuser'=>$byuser, 'appointment'=>$appointment);
+        $data=array('ofuser'=>$ofuser, 'byuser'=>$byuser, 'appointment'=>$appointment, 'byusername'=>$byusername, 'ofusername'=>$ofusername);
 
         return view('pages.ratingform')->with($data);
     }
@@ -54,6 +60,7 @@ class RatingController extends Controller
      */
     public function create(Request $request, $id)
     {
+        $user=auth()->user();
         $curid=count(Rating::all())+1;
         $appointment=Appointment::find($id);
         $appt=$appointment->appt_id;
@@ -69,8 +76,12 @@ class RatingController extends Controller
 
         //return $rating;
         $rating->save();
-
-        return redirect()->route('dashboard');
+        if($user->type==2){
+            return redirect()->route('previousappts');
+        }
+        else if($user->type==1){
+            return redirect()->route('dashboard');
+        }
     }
 
     /**

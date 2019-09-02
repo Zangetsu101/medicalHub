@@ -97,23 +97,12 @@ class DashboardController extends Controller
         $doctor->spec;
         $doctor->hospital;
         $prescriptions= Prescription::all();
-        $appointments=Appointment::where([['doc_id','=',$doctor->doc_id],['date','<',Date('Y/m/d')]])->orderBy('date','DESC')->paginate(10);
+        $appointments=Appointment::has('prescription')->where([['doc_id','=',$doctor->doc_id],['date','<',Date('Y/m/d')]])->orderBy('date','DESC')->paginate(10);
         
-        // foreach($appointments as $appointment)
-        // {
-        //     $temp=Prescription::find($appointment->appt_id);
-
-        //     if (is_array($temp))
-        //     {
-        //         continue;
-        //     }
-        //     $appointments->forget($appointment->appt_id);
-        //     $appointments->all();
-        // }
-
-        
+   
         foreach($appointments as $appointment)
             $appointment->patient;
+            
         $data =array(
             'doctor'=> $doctor,
             'appointments' => $appointments

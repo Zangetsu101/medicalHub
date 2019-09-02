@@ -15,17 +15,17 @@
                         <form method="POST" action="{{route('ratingsubmission', $appointment->appt_id)}}">
                             @csrf
                             <div class="form-row">
-                                <label for="of"> Of User {{$ofuser}} </label>
+                                <label for="of"> Of {{$ofusername}} </label>
                                 <input type="hidden" id="ofuser" name="ofuser" value="{{$ofuser}}">
                             </div>
                             <div class="form-row">
-                                <label for="by"> By User {{$byuser}} </label>
+                                <label for="by"> By {{$byusername}} </label>
                                 <input type="hidden" id="byuser" name="byuser" value="{{$byuser}}">
                             </div>
 
                             <label for="rating"> Rating </label>
                             <div class="form-row">
-                                <select class="form-control" id="rating" name="rating">
+                                <select required class="form-control" id="rating" name="rating">
                                     <option value="">--Please choose an option--</option>
                                     <option value=1>1</option>
                                     <option value=2>2</option>
