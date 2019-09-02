@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use JavaScript;
 use App\Patient;
+use App\User;
+use App\Rating;
 
 class PatientsController extends Controller
 {
@@ -47,7 +49,6 @@ class PatientsController extends Controller
      */
     public function show($id)
     {
-        //
         $patient=Patient::find($id);
         $prescriptions=$patient->prescriptions()->paginate(10);
         $dates=array();
@@ -68,7 +69,33 @@ class PatientsController extends Controller
             'bp_low' => $bp_low,
             'bp_high' => $bp_high
         ]);
-        $data=array('patient'=>$patient,'prescriptions'=>$prescriptions);
+
+        $patient_user=User::where([
+            ['type','=','1'],
+            ['foreign_id', '=', $patient->patient_id],
+            ])->get()->first();
+        
+        $patient_user_id = $patient_user->id;
+
+        $ratings=Rating::where([
+            ['of_user', '=', $patient_user_id]
+        ])->get();
+
+        $rating_count = count($ratings);
+        $rating_sum = 0.0;
+        $rating = 0.0;
+        
+        if($rating_count != 0){
+            foreach($ratings as $item){
+                $rating_sum = $rating_sum+$item->rating_value;
+            }
+            $rating = $rating_sum/$rating_count;
+        }
+
+        //return $rating;
+        $rating = round($rating, 3);
+
+        $data=array('patient'=>$patient,'prescriptions'=>$prescriptions, 'rating' => $rating);
         return view('pages.patientprofile')->with($data);
     }
 

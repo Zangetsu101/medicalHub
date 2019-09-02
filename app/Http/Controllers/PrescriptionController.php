@@ -30,7 +30,20 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
+    public function create(Request $request)
+    {
+       
+       $pres=new Prescription;
+
+       $pres->appt_id=$request->input('appt_id');
+       $pres->weight=$request->input('weight');
+       $pres->bp_low=$request->input('bpLow');
+       $pres->bp_high=$request->input('bpHigh');
+       $pres->save();
+
+       return $pres;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -101,7 +114,7 @@ class PrescriptionController extends Controller
         $prescription=$appointment->prescription;
         if($prescription)
         {
-            return redirect()->route('prescription.show',$prescription->prescription_id);
+          return redirect()->route('prescription.show',$prescription->prescription_id);
         }
         $doctor=Doctor::find($appointment->doc_id);
         $doctor->spec;

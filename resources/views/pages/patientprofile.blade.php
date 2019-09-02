@@ -13,7 +13,7 @@
         </div>
         <div class="row justify-content-center">
             <p>Gender: @if($patient->gender=='m')
-                        Male
+                            Male
                         @else  
                             Female
                         @endif
@@ -22,6 +22,10 @@
         <div class="row justify-content-center">
             <p>Date of Birth: {{$patient->dob}}</p>
         </div>
+        <div class="row justify-content-center">
+            <p>Rating: {{ $rating }}</p>
+        </div>
+
         <div class="row">
             <div class="col-md-8">
                 <div class="card-box">
