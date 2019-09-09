@@ -130,7 +130,4 @@ class PrescriptionController extends Controller
         return view('pages.prescriptioncreate')->with($data);
 
     }
-
-
-
 }
