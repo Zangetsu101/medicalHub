@@ -48,6 +48,22 @@ class RatingController extends Controller
             $ofusername=$patient_user_name;
         }
 
+        $existing=Rating::where([
+            ['appt_id', '=', $appointment->appt_id],
+            ['of_user', '=', $ofuser],
+            ['by_user', '=', $byuser],
+        ])->get();
+
+        if (count($existing) > 0)
+        {
+            if($user->type==2){
+                return redirect()->route('previousappts')->with('Failure', 'Rating already given');
+            }
+            else if($user->type==1){
+                return redirect()->route('dashboard')->with('Failure', 'Rating already given');
+            }
+        }
+
         $data=array('ofuser'=>$ofuser, 'byuser'=>$byuser, 'appointment'=>$appointment, 'byusername'=>$byusername, 'ofusername'=>$ofusername);
 
         return view('pages.ratingform')->with($data);
@@ -78,6 +94,7 @@ class RatingController extends Controller
 
         //return $rating;
         $rating->save();
+        
         if($user->type==2){
             return redirect()->route('previousappts');
         }
