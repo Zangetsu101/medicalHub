@@ -9,17 +9,23 @@
 
             <div class="form-row">
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                 <label for="fname">Name: <b><a v-bind:href="patientRoute">{{name}}</a></b></label> <br>
                 </div>
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="gender">Gender: <b>{{gender}}</b> </label>
                 </div>
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
+                    <label for="age">Age: <b>{{age}}</b> </label>
+                </div>
+                
+                <div class="form-group col-md-3">
                     <label for="gender">Appointment Id: <b>{{appt_id}}</b> </label>
                 </div>
+
+                
 
             </div>
 
@@ -140,7 +146,7 @@ import AutoComplete from './AutoComplete.vue';
 export default {
     props: ['name','gender','appt_id','patientRoute','submitRoute',
             'availMedicinesurl','symptomsurl','testsurl','prescriptionPost',
-            'presmedicinePost','pressympPost','prestestPost'],
+            'presmedicinePost','pressympPost','prestestPost','age'],
     components: {
         'auto-complete':AutoComplete
     },

@@ -14,10 +14,16 @@
                 <div class="col-md-12">
                     <div class="card-box">
                         <div class="card-header bg-primary text-white">Basic Details</div>
-                        <div class="card-body">
+                        <div class="card-body"> 
+                            <div class="row">
+                                <div class="col"> Name:  {{$patient->name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">Age(years): {{$patient->age}} </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
-                                    Weight:{{$prescription->weight}}
+                                    Weight: {{$prescription->weight}} kg
                                 </div>
                                 <div class="col text-right">
                                     Date: {{$prescription->appointment->date}}

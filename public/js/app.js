@@ -1957,9 +1957,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['name', 'gender', 'appt_id', 'patientRoute', 'submitRoute', 'availMedicinesurl', 'symptomsurl', 'testsurl', 'prescriptionPost', 'presmedicinePost', 'pressympPost', 'prestestPost'],
+  props: ['name', 'gender', 'appt_id', 'patientRoute', 'submitRoute', 'availMedicinesurl', 'symptomsurl', 'testsurl', 'prescriptionPost', 'presmedicinePost', 'pressympPost', 'prestestPost', 'age'],
   components: {
     'auto-complete': _AutoComplete_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -37653,7 +37659,7 @@ var render = function() {
       _c("br"),
       _vm._v(" "),
       _c("div", { staticClass: "form-row" }, [
-        _c("div", { staticClass: "form-group col-md-4" }, [
+        _c("div", { staticClass: "form-group col-md-3" }, [
           _c("label", { attrs: { for: "fname" } }, [
             _vm._v("Name: "),
             _c("b", [
@@ -37666,14 +37672,21 @@ var render = function() {
           _c("br")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group col-md-4" }, [
+        _c("div", { staticClass: "form-group col-md-3" }, [
           _c("label", { attrs: { for: "gender" } }, [
             _vm._v("Gender: "),
             _c("b", [_vm._v(_vm._s(_vm.gender))])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group col-md-4" }, [
+        _c("div", { staticClass: "form-group col-md-3" }, [
+          _c("label", { attrs: { for: "age" } }, [
+            _vm._v("Age: "),
+            _c("b", [_vm._v(_vm._s(_vm.age))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-3" }, [
           _c("label", { attrs: { for: "gender" } }, [
             _vm._v("Appointment Id: "),
             _c("b", [_vm._v(_vm._s(_vm.appt_id))])
@@ -50543,8 +50556,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\medicalHub\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\medicalHub\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\Xampp\htdocs\medicalHub\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Xampp\htdocs\medicalHub\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

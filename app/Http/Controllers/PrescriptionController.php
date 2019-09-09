@@ -9,6 +9,7 @@ use App\Doctor;
 use App\Appointment;
 use App\Medicine;
 use App\Report;
+use Carbon\carbon;
 
 class PrescriptionController extends Controller
 {
@@ -65,12 +66,19 @@ class PrescriptionController extends Controller
     {
         //
         $prescription=Prescription::find($id);
+        $appointment=Appointment::find($prescription->appt_id);
+        $patient=Patient::find($appointment->patient_id);
+
         $tests=$prescription->prescribedTests;
         $medicines=$prescription->prescribedMedicines;
         foreach($medicines as $medicine)
           $medicine->medicine;
         $prescription->symptoms;
-        $data=array('prescription'=>$prescription,'tests'=>$tests,'medicines'=>$medicines);
+
+        $date = new Carbon($appointment->date); 
+        $patient['age']=$date->diffInYears($patient->dob);
+
+        $data=array('prescription'=>$prescription,'tests'=>$tests,'medicines'=>$medicines,'patient'=>$patient);
         return view('pages.prescription')->with($data);
     }
 
@@ -120,6 +128,9 @@ class PrescriptionController extends Controller
         $doctor->spec;
         $doctor->hospital;
         $patient=Patient::find($appointment->patient_id);
+
+        $date = new Carbon($appointment->date); 
+        $patient['age']=$date->diffInYears($patient->dob);
 
         $data=array(
           'doctor'=>$doctor,

@@ -8,6 +8,7 @@ use App\Patient;
 use App\User;
 use App\Rating;
 
+
 class PatientsController extends Controller
 {
     /**

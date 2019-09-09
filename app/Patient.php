@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Carbon\carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,4 +19,6 @@ class Patient extends Model
         return $this->hasManyThrough('App\Prescription','App\Appointment','patient_id','appt_id',
                                      'patient_id','appt_id');
     }
+
+
 }
