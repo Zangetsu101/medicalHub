@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use JavaScript;
 use App\Doctor;
 use App\Hospital;
 use App\Department;
@@ -128,6 +129,28 @@ class DoctorsController extends Controller
         $user=auth()->user();
         $doctor=Doctor::find($id);
         
+        $disabledDays=[0,1,2,3,4,5,6];
+        $days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        $toRemove=[];
+        foreach($doctor->schedule as $schedule)
+        {
+            for($i=0;$i<7;$i++)
+            {
+                if($days[$i]==$schedule->day)
+                {
+                    array_push($toRemove,$i);
+                    // array_splice($disabledDays,$i,1);
+                    break;
+                }
+            }
+        }
+        sort($toRemove);
+        for($i=sizeof($toRemove)-1;$i>=0;$i--)
+            array_splice($disabledDays,$toRemove[$i],1);
+        JavaScript::put([
+            'disabledDays' => $disabledDays        
+        ]);
+
         $doc_user=User::where([
             ['type','=','2'],
             ['foreign_id', '=', $doctor->doc_id],

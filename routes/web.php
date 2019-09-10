@@ -39,8 +39,6 @@ Route::get('/dashboard/emergencyops', 'DashboardController@emergencyops')->name(
 
 Route::post('/doctors','DoctorsController@filter')->name('doctors.filter');
 
-Route::get('/doctors/{doctor}/appointment','AppointmentController@index')->name('appointment.index');
-
 Route::get('/appointment/{appointment}','AppointmentController@destroy')->name('appointment.destroy');
 
 Route::get('/patient-{patient}','PatientsController@show')->name('patient.show');

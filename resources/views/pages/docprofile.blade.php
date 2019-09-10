@@ -39,7 +39,16 @@
                 Rating: {{ $rating }}
             </p>
 
-            <p class="button-custom order-lg-last"><a href="{{ route('appointment.index',$doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Make an Appointment</a></p>
+            <form method="POST" action="{{route('appointment.store',$doctor->doc_id)}}">
+                @csrf
+                <div class="form-group row">
+                    <label for="date">{{ __('Date of Appointment:') }}</label>
+                    <input id="date" class="date form-control" type="text" name="date" value="{{ old('date') }}" required autocomplete="date">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Take Appointment') }}
+                </button>
+            </form>
             @guest
             
             @else
@@ -50,4 +59,15 @@
         </div>
     </section>
 
+@endsection
+
+@section('script')
+   	@include('footer')
+	<script type="text/javascript">
+		$('.date').datepicker({  
+			format:'yyyy-mm-dd',
+			startDate:new Date(),
+			daysOfWeekDisabled:window.disabledDays
+		});  
+	</script>
 @endsection

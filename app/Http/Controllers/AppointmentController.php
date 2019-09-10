@@ -15,24 +15,6 @@ class AppointmentController extends Controller
     //
     public function index(Request $request)
     {
-        $doctor=Doctor::find($request->doctor);
-        $disabledDays=[0,1,2,3,4,5,6];
-        $days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        foreach($doctor->schedule as $schedule)
-        {
-            for($i=0;$i<7;$i++)
-            {
-                if($days[$i]==$schedule->day)
-                {
-                    array_splice($disabledDays,$i,1);
-                    break;
-                }
-            }
-        }
-        JavaScript::put([
-            'disabledDays' => $disabledDays        
-        ]);
-        return view('pages.createappointment')->with('doctor',$doctor);
     }
 
     public function store(Request $request)
