@@ -26,7 +26,7 @@
                             <label for="rating"> Rating </label>
                             <div class="form-row">
                                 <select required class="form-control" id="rating" name="rating">
-                                    <option value="">--Please choose an option--</option>
+                                    <option value="">--Please choose a rating--</option>
                                     <option value=1>1</option>
                                     <option value=2>2</option>
                                     <option value=3>3</option>
