@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style> 
+    .checked {
+    color: orange;
+    }
+    </style>
+@endsection
+
 @section('content')
     <div class="container mt-3 mb-3">
         <div class="d-flex flex-column">
@@ -28,7 +37,55 @@
                             <td class="text-center">{{$doc->doc_id}}</td>
                             <td class="text-center">{{$doc->name}}</td>
                             <td class="text-center">{{$doc->hospital->name}}</td>
-                            <td class="text-center">{{$doc->rating}}</td>
+                            <td class="text-center">        
+                                @if($doc->rating==0)
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                @endif
+
+                                @if($doc->rating==1)
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                @endif
+
+                                @if($doc->rating==2)
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                @endif
+
+                                @if($doc->rating==3)
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                @endif
+
+                                @if($doc->rating==4)
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                @endif
+
+                                @if($doc->rating==5)
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
