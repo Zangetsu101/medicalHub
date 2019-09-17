@@ -41,4 +41,9 @@ class Appointment extends Model
                 return $schedule->start_time;
         }
     }
+
+    public function rating()
+    {
+        return $this->belongsTo('App\Rating','appt_id','appt_id');
+    }
 }

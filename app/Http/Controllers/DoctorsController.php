@@ -35,6 +35,7 @@ class DoctorsController extends Controller
         }
         $data=array('doctors'=>$doctors,'hospitals'=>$hospitals,
                     'specialities'=>$specialities);
+    
         return view('pages.doctors')->with($data);
     }
 

@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style> 
+    .checked {
+    color: orange;
+    }
+    </style>
+@endsection
+
 @section('routes')
     <span><a href="{{ route('/') }}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
     <span>{{$patient->name}} <i class="ion-ios-arrow-forward"></i></span>
@@ -23,7 +32,56 @@
             <p>Date of Birth: {{$patient->dob}}</p>
         </div>
         <div class="row justify-content-center">
-            <p>Rating: {{ $rating }}</p>
+            <p>
+                @if($rating==0)
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                @endif
+
+                @if($rating==1)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                @endif
+
+                @if($rating==2)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                @endif
+
+                @if($rating==3)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                @endif
+
+                @if($rating==4)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                @endif
+
+                @if($rating==5)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                @endif
+            
+            </p>
         </div>
 
         <div class="row">

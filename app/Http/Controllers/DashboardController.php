@@ -11,6 +11,8 @@ use App\Prescription;
 use App\Admittedpatient;
 use App\Emoperations;
 use App\Docevent;
+use App\Rating;
+use App\User;
 
 class DashboardController extends Controller
 {
@@ -69,8 +71,50 @@ class DashboardController extends Controller
         }
         else if($user->type==3) //for admins
         {
+
             $admin=auth()->user();
-            return view('pages.admindashboard')->with('admin', $admin);
+
+            $doctors=Doctor::all();
+
+            foreach($doctors as $doc)
+            {
+                
+                $user=User::where([
+                    ['type','=','2'],
+                    ['foreign_id', '=', $doc->doc_id],
+                    ])->get()->first();
+    
+                $ratings=Rating::where([['of_user','=',$user->id]])->get();
+                
+                $rating_count = count($ratings);
+                $rating_sum = 0.0;
+                $rating = 0.0;
+                
+                if($rating_count != 0)
+                {
+                    foreach($ratings as $item)
+                    {
+                        $rating_sum = $rating_sum+$item->rating_value;
+                    }
+            
+                    $rating = $rating_sum/$rating_count;
+                }
+
+                //return $rating;
+                $rating = round($rating, 3);
+
+                $doc['rating']=$rating;
+                $doc->hospital;
+
+            }
+
+
+
+            $data=['doctors' => $doctors];
+
+            return view('pages.admindashboard')->with($data);
+
+
         }
     }
 
@@ -98,10 +142,17 @@ class DashboardController extends Controller
         $doctor->hospital;
         $prescriptions= Prescription::all();
         $appointments=Appointment::has('prescription')->where([['doc_id','=',$doctor->doc_id],['date','<',Date('Y/m/d')]])->orderBy('date','DESC')->paginate(10);
-        
    
+
         foreach($appointments as $appointment)
-            $appointment->patient;
+        {
+            $appointment->patient;   
+            if($appointment->rating)
+                $appointment['hasRating']=true;
+            else
+                $appointment['hasRating']=false;
+        }
+            
             
         $data =array(
             'doctor'=> $doctor,
