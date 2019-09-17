@@ -8,6 +8,7 @@ class Docevent extends Model
 {
     //
     protected $primaryKey='doc_id';
+    public $timestamps = false;
 
     public function doctor()
     {

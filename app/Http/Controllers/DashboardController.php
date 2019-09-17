@@ -13,6 +13,7 @@ use App\Emoperations;
 use App\Docevent;
 use App\Rating;
 use App\User;
+ 
 
 class DashboardController extends Controller
 {
@@ -168,6 +169,29 @@ class DashboardController extends Controller
         $event=Docevent::where([['doc_id','=',$doctor->doc_id],['date','>=',Date('Y/m/d')]])->get();
 
         return view('pages.upcomingevents')->with('event',$event);
+    }
+
+    public function newevent()
+    {
+        return view('pages.newevent');
+    }
+
+    public function neweventsubmit(Request $request)
+    {
+        $user=auth()->user();
+
+        $doctor=Doctor::find($user->foreign_id);
+
+        $ev=New Docevent;
+        $ev->doc_id=$doctor->doc_id;
+        $ev->eventname=$request->input('name');
+        $ev->place=$request->input('place');
+        $ev->time=$request->input('time');
+        $ev->date=$request->input('date');
+
+        $ev->save();
+
+        return redirect('dashboard');
     }
 
     public function admittedpatients()
