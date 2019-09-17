@@ -207,4 +207,16 @@ class DashboardController extends Controller
 
         return view('pages.emergencyops')->with($data);
     }
+
+    public function statistics()
+    {
+        $doctors=Doctor::with('hospital')->get();
+        foreach($doctors as $doctor)
+        {
+            $doctor['count']=Appointment::where('doc_id',$doctor->doc_id)->
+            whereRaw('MONTH(date)=MONTH(CURRENT_DATE)')->
+            groupBy('doc_id')->orderBy('doc_id','ASC')->count();
+        }
+        return view('pages.statistics')->with('doctors',$doctors);
+    }
 }

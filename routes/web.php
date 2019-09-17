@@ -77,3 +77,5 @@ Route::get('/{appointment}/rating', 'RatingController@index')->name('ratingform'
 
 Route::post('/{appointment}/rating', 'RatingController@create')->name('ratingsubmission');
 
+Route::get('/statistics','DashboardController@statistics')->name('stats');
+

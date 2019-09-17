@@ -33,54 +33,14 @@
         </div>
         <div class="row justify-content-center">
             <p>
-                @if($rating==0)
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                @endif
-
-                @if($rating==1)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                @endif
-
-                @if($rating==2)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                @endif
-
-                @if($rating==3)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                @endif
-
-                @if($rating==4)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "></span>
-                @endif
-
-                @if($rating==5)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                @endif
-            
+                Rating: 
+                @for($i=0;$i<5;$i++)
+                    @if($rating>$i)
+                        <span class="fa fa-star checked"></span>
+                    @else
+                        <span class="fa fa-star"></span>
+                    @endif
+                @endfor
             </p>
         </div>
 
