@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing the chart of patient blood pressure --}}
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">

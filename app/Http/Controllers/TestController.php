@@ -14,6 +14,8 @@ class TestController extends Controller
         return $tests;
     }
 
+    /*Adding new test to tests table 
+    when doctor doesn't choose any from existing tests from table */
     public function NewTest(Request $request) {
         $test=new Test;
         $test->name=$request->name;
@@ -21,6 +23,7 @@ class TestController extends Controller
         return $test;
     }
 
+    //Adding tests to prestest table when doctor is writing a prescription
     public function NewPrescribedTest(Request $request)
     {
         $test=new PrescribedTest;

@@ -1,3 +1,5 @@
+{{-- This blade is used to login --}}
+
 @extends('layouts.app')
 
 @section('content')

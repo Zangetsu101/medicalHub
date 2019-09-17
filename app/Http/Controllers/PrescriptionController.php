@@ -31,9 +31,10 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Prescription creation against an appointment
     public function create(Request $request)
     {
-       
        $pres=new Prescription;
 
        $pres->appt_id=$request->input('appt_id');
@@ -62,6 +63,8 @@ class PrescriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Prescription showing for Doctor/Patient
     public function show($id)
     {
         //
@@ -116,6 +119,7 @@ class PrescriptionController extends Controller
         //
     }
 
+    //Sending doctor, appointment, patient data to blade to create prescription
     public function prescriptioncreate(Request $request)
     {
         $appointment=Appointment::find($request->appointment);
@@ -139,6 +143,5 @@ class PrescriptionController extends Controller
         );
 
         return view('pages.prescriptioncreate')->with($data);
-
     }
 }

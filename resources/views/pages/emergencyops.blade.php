@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing upcoming emergency operations details to doctor --}}
 <div class="container mt-3">
     <div class="row">
         <div class="columns">
@@ -34,7 +34,6 @@
                         <td> {{$ep->patient->name}} </td>    
                         <td> {{$ep->date}} </td>      
                         <td> {{$ep->time}} </td>  
-
                     </tr>
 
                 @endforeach

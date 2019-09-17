@@ -14,6 +14,8 @@ class SymptomController extends Controller
         return $symptoms;
     }
 
+    /*Adding new symptom to symptom table 
+    when doctor doesn't choose any from existing symptoms from table */
     public function NewSymptom(Request $request) {
         $symptom=new Symptom;
         $symptom->name=$request->name;
@@ -21,6 +23,7 @@ class SymptomController extends Controller
         return $symptom;
     }
 
+    //Adding symptom to pressymp table when doctor is writing a prescription
     public function PrescriptionSymptom(Request $request) {
         $pressymp=new PrescriptionSymptom;
         $pressymp->prescription_id=$request->prescription_id;

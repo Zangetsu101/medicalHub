@@ -17,7 +17,8 @@
 @endsection
 
 @section('content')
-
+{{-- Doctor profile details showing. Divided in 3 cards --}}
+{{-- One shows the profile, One contact and timing, other to make appointment --}}
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-4">
@@ -59,7 +60,7 @@
                             <span class="fa fa-star "></span>
                         @endif
 
-                        @if($rating==1)
+                        @if($rating>0 && $rating<=1)
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star "></span>
                             <span class="fa fa-star "></span>
@@ -67,7 +68,7 @@
                             <span class="fa fa-star "></span>
                         @endif
 
-                        @if($rating==2)
+                        @if($rating>1 && $rating<=2)
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star "></span>
@@ -75,7 +76,7 @@
                             <span class="fa fa-star "></span>
                         @endif
 
-                        @if($rating==3)
+                        @if($rating>2 && $rating<=3)
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -83,7 +84,7 @@
                             <span class="fa fa-star "></span>
                         @endif
 
-                        @if($rating==4)
+                        @if($rating>3 && $rating<=4)
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -91,14 +92,13 @@
                             <span class="fa fa-star "></span>
                         @endif
 
-                        @if($rating==5)
+                        @if($rating>4 && $rating<=5)
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                         @endif
-
                     </p>
                     </div>
                 </div>
@@ -108,6 +108,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
+                        {{-- Appointment Scheduling portion --}}
                     <form method="POST" action="{{route('appointment.store',$doctor->doc_id)}}">
                         @csrf
                         <div class="form-group row">
@@ -120,6 +121,7 @@
                     </form>
                     @guest
                 
+                    {{-- Button for admin to edit doctor profile --}}
                     @else
                         @if($user->type==3)
                             <p class="button-custom order-lg-last mt-2"><a href="{{ route('docedit', $doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Edit Profile</a></p>

@@ -15,6 +15,8 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Finding the users related to this rating and sending the data to blade
     public function index($id)
     {
         $user=auth()->user();
@@ -74,6 +76,8 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //rating creation. Can be created only once
     public function create(Request $request, $id)
     {
         $user=auth()->user();

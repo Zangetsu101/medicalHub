@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Hospital;
 use App\Speciality;
 
-
+//Tabs in home/layout are routed in this controller
 class PagesController extends Controller
 {
     public function index()

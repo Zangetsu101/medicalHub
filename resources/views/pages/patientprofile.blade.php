@@ -15,7 +15,9 @@
 @endsection
 
 @section('content')
-
+{{-- Patient profile --}}
+{{-- Includes previous prescriptions --}}
+{{-- Weight graph and Blood Pressure graph and their tabular chart --}}
     <div class="container mt-3">
         <div class="row justify-content-center">
             <h2>Patient Name: {{$patient->name}}</h2>
@@ -41,7 +43,7 @@
                     <span class="fa fa-star "></span>
                 @endif
 
-                @if($rating==1)
+                @if($rating>0 && $rating<=1)
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star "></span>
                     <span class="fa fa-star "></span>
@@ -49,7 +51,7 @@
                     <span class="fa fa-star "></span>
                 @endif
 
-                @if($rating==2)
+                @if($rating>1 && $rating<=2)
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star "></span>
@@ -57,7 +59,7 @@
                     <span class="fa fa-star "></span>
                 @endif
 
-                @if($rating==3)
+                @if($rating>2 && $rating<=3)
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -65,7 +67,7 @@
                     <span class="fa fa-star "></span>
                 @endif
 
-                @if($rating==4)
+                @if($rating>3 && $rating<=4)
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -73,14 +75,13 @@
                     <span class="fa fa-star "></span>
                 @endif
 
-                @if($rating==5)
+                @if($rating>4 && $rating<=5)
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                 @endif
-            
             </p>
         </div>
 

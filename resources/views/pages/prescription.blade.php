@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-
+{{-- Prescription with Basic Details, Symptoms, Prescribed Medicines, Tests --}}
     <section class="ftco-section">
         <div class="container">
             <div class="row">
@@ -31,8 +31,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Blood Pressure:{{$prescription->bp_low}}/{{$prescription->bp_high}}
-                                </div>
+                                    Blood Pressure : {{$prescription->bp_low}}/{{$prescription->bp_high}}
+                                </div> 
                             </div>
                         </div>
                     </div>

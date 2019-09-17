@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing todays appointments to doctor --}}
 <div class="container mt-3">
     <div class="row">
         <div class="columns">

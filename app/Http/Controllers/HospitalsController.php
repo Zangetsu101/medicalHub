@@ -23,6 +23,8 @@ class HospitalsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Hospital registering by admin
     public function create(Request $request)
     {
         $id=count(Hospital::all())+1;
@@ -55,6 +57,8 @@ class HospitalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Hospital data shoeing in hospitals tab
     public function show($hospital_id)
     {
         $user=auth()->user();
@@ -71,6 +75,8 @@ class HospitalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Sending hospital details to blade for editing
     public function edit($id)
     {
         $hospital=Hospital::find($id);
@@ -84,6 +90,8 @@ class HospitalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Updating Hospital details after editing
     public function update(Request $request, $id)
     {
         $hospital=Hospital::find($id);
@@ -108,6 +116,7 @@ class HospitalsController extends Controller
         //
     }
 
+    //calling the page to register hospital
     public function hospitalRegister()
     {
         return view('pages.hospitalregister');

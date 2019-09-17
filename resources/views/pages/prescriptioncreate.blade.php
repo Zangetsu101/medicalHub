@@ -9,7 +9,8 @@
 
 
 @section('content')
-
+{{-- From to add prescription for a appointment --}}
+{{-- New medicines, symptomps, tests will also be added to database --}}
 <div id="app">
     <prescription-form 
         name="{{$patient->name}}"

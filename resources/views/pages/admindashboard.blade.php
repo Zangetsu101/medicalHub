@@ -9,6 +9,8 @@
     </style>
 @endsection
 
+{{-- Admin dashboard contains buttons to register doctor and hospital --}}
+{{-- It also contains doctor list with their details and ratings--}}
 @section('content')
     <div class="container mt-3 mb-3">
         <div class="d-flex flex-column">
@@ -27,7 +29,6 @@
                             <th class="text-center" scope="col">Doc_ID</th>
                             <th class="text-center" scope="col">Name</th>
                             <th class="text-center" scope="col">Hospital Name </th>
-                            <th class="text-center" scope="col">Rating</th>
                         </tr>
                     </thead>
 
@@ -37,6 +38,7 @@
                             <td class="text-center">{{$doc->doc_id}}</td>
                             <td class="text-center">{{$doc->name}}</td>
                             <td class="text-center">{{$doc->hospital->name}}</td>
+                            <td class="text-center">{{$doc->rating}}</td>
                             <td class="text-center">        
                                 @if($doc->rating==0)
                                     <span class="fa fa-star "></span>
@@ -46,7 +48,7 @@
                                     <span class="fa fa-star "></span>
                                 @endif
 
-                                @if($doc->rating==1)
+                                @if($doc->rating>0 && $doc->rating<=1)
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star "></span>
                                     <span class="fa fa-star "></span>
@@ -54,7 +56,7 @@
                                     <span class="fa fa-star "></span>
                                 @endif
 
-                                @if($doc->rating==2)
+                                @if($doc->rating>1 && $doc->rating<=2)
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star "></span>
@@ -62,7 +64,7 @@
                                     <span class="fa fa-star "></span>
                                 @endif
 
-                                @if($doc->rating==3)
+                                @if($doc->rating>2 && $doc->rating<=3)
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -70,7 +72,7 @@
                                     <span class="fa fa-star "></span>
                                 @endif
 
-                                @if($doc->rating==4)
+                                @if($doc->rating>3 && $doc->rating<=4)
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -78,7 +80,7 @@
                                     <span class="fa fa-star "></span>
                                 @endif
 
-                                @if($doc->rating==5)
+                                @if($doc->rating>4 && $doc->rating<=5)
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -89,7 +91,6 @@
                         </tr>
                     @endforeach
                 </tbody>
-                
                 </table>
 
             </div>

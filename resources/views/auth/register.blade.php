@@ -1,3 +1,5 @@
+{{-- This blade is used to register patients --}}
+
 @extends('layouts.app')
 
 @section('content')

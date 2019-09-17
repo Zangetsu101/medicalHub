@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing upcoming events to doctor --}}
 <div class="container mt-3">
 
     <div class="d-flex justify-content-center">

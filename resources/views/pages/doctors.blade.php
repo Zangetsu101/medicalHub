@@ -2,11 +2,13 @@
 
 
 @section('routes')
-                <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
-                <span>Doctors <i class="ion-ios-arrow-forward"></i></span>
+    <span class="mr-2"><a href="{{route('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+    <span>Doctors <i class="ion-ios-arrow-forward"></i></span>
 @endsection
 
 @section('content')   
+{{-- Showing all doctors' short detail together in doctors tab --}}
+{{-- Includes filtering of doctors using keywords of Name, Hospital, Speciality --}}
     <section class="ftco-section">
         <div class="container">
             <div class="row">

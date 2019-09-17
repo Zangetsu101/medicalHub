@@ -17,6 +17,7 @@ class AppointmentController extends Controller
     {
     }
 
+    //Creating new appointment. Can't add multiple appointments on same day with same doctor
     public function store(Request $request)
     {
         $user=auth()->user();
@@ -40,9 +41,9 @@ class AppointmentController extends Controller
         return redirect('dashboard')->with('success','Appointment Added!');
     }
 
+    //Destroying appointment. Patient will be able to destroy appointment if needed.
     public function destroy($id)
     {
-        //
         $appointment=Appointment::find($id);
         $nextAppointments=Appointment::where(['date'=>$appointment->date,'doc_id'=>$appointment->doc_id,
                                               ['serial_no','>',$appointment->serial_no]])->get();

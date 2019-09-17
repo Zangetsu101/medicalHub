@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+{{-- Common layout of Website is built here --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -36,6 +38,7 @@
         @yield('style')        
     </head>
     <body>
+        {{-- Upper portion of layout defined here --}}
         <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
             <div class="container">
                 <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/doctodayschedule.css')}}">
 @endsection
 @section('content')
-
+{{-- Showing Admitted Patient details under a doctor --}}
 <div class="container mt-3">
     <div class="row">
         <div class="columns">

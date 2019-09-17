@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing the chart of patient weights --}}
    <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">

@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing all departments together in depatments tab. Default view is the first department --}}
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-2">

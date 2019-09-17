@@ -13,6 +13,9 @@ class DepartmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //To show departments in department tab
+    //Doctors of correponding department will also be shown
     public function index()
     {
         //

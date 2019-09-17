@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing Doctor's previous previous patients and their appointments --}}
 <div class="container mt-3">
     <div class="row">
         <div class="columns">
@@ -36,7 +36,7 @@
                         <td> <a href="{{route('patient.show',$apt->patient_id)}}">{{$apt->patient->name}}</a> </td>  
 
                         @if($apt->hasRating)
-                            <td> <div>Rating Done</a></div> </td>  
+                            <td> <div>Given</a></div> </td>  
                         
                         @else
                             <td> <div class="col-md-2"><a href="{{route('ratingform', $apt->appt_id)}}" type="button btn-primary py-2 px-3">Rate</a></div> </td>

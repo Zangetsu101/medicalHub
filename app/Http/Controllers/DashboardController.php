@@ -32,6 +32,9 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    //Initial dashboard to show after login. 
+    //User are of three types. Patients, Doctors, Admins
     public function index()
     {
         $user=auth()->user();
@@ -106,19 +109,14 @@ class DashboardController extends Controller
 
                 $doc['rating']=$rating;
                 $doc->hospital;
-
             }
 
-
-
             $data=['doctors' => $doctors];
-
             return view('pages.admindashboard')->with($data);
-
-
         }
     }
 
+    //Doctor's appointments showing for today
     public function todayappts()
     {
         $user=auth()->user();
@@ -135,6 +133,7 @@ class DashboardController extends Controller
         return view('pages.todayappts')->with($data);
     }
 
+    //Doctor's previous appointments showing
     public function previousappts()
     {
         $user=auth()->user();
@@ -143,7 +142,6 @@ class DashboardController extends Controller
         $doctor->hospital;
         $prescriptions= Prescription::all();
         $appointments=Appointment::has('prescription')->where([['doc_id','=',$doctor->doc_id],['date','<',Date('Y/m/d')]])->orderBy('date','DESC')->paginate(10);
-   
 
         foreach($appointments as $appointment)
         {
@@ -152,8 +150,7 @@ class DashboardController extends Controller
                 $appointment['hasRating']=true;
             else
                 $appointment['hasRating']=false;
-        }
-            
+        } 
             
         $data =array(
             'doctor'=> $doctor,
@@ -162,6 +159,7 @@ class DashboardController extends Controller
         return view('pages.previousappts')->with($data);
     }
 
+    //Doctor's upcoming events/appointments
     public function upcomingevents()
     {
         $user=auth()->user();
@@ -171,11 +169,13 @@ class DashboardController extends Controller
         return view('pages.upcomingevents')->with('event',$event);
     }
 
+    //Doctor adding new Event
     public function newevent()
     {
         return view('pages.newevent');
     }
 
+    //registering new event in doctor's profile
     public function neweventsubmit(Request $request)
     {
         $user=auth()->user();
@@ -194,6 +194,7 @@ class DashboardController extends Controller
         return redirect('dashboard');
     }
 
+    //Showing list of patient admitted under the doctor
     public function admittedpatients()
     {
         $user=auth()->user();
@@ -214,6 +215,7 @@ class DashboardController extends Controller
         return view('pages.admittedpatients')->with($data);
     }
 
+    //details about upcoming emergency operations
     public function emergencyops()
     {
         $user=auth()->user();
