@@ -81,3 +81,5 @@ Route::get('/upcomingevents/newevent', 'DashboardController@newevent')->name('ne
 
 Route::post('/upcomingevents/newevent','DashboardController@neweventsubmit')->name('neweventsubmit');
 
+Route::get('/statistics','DashboardController@statistics')->name('stats');
+
