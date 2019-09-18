@@ -50,6 +50,7 @@ class PatientsController extends Controller
      */
     public function show($id)
     {
+        $xuser=auth()->user();
         $patient=Patient::find($id);
         $prescriptions=$patient->prescriptions()->paginate(10);
         $dates=array();
@@ -96,7 +97,7 @@ class PatientsController extends Controller
         //return $rating;
         $rating = round($rating, 3);
 
-        $data=array('patient'=>$patient,'prescriptions'=>$prescriptions, 'rating' => $rating);
+        $data=array('user'=>$xuser, 'patient'=>$patient,'prescriptions'=>$prescriptions, 'rating' => $rating);
         return view('pages.patientprofile')->with($data);
     }
 

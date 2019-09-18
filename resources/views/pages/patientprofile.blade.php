@@ -45,9 +45,11 @@
                 @endfor
             </p>
         </div>
-        <div class="row justify-content-center">
-            <a href="{{route('ratings')}}" class="btn btn-primary stretched-link">My Ratings</a>
-        </div>
+        @if($user->foreign_id==$patient->patient_id)
+            <div class="row justify-content-center">
+                <a href="{{route('ratings')}}" class="btn btn-primary stretched-link mb-2">My Ratings</a>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-8">
                 <div class="card-box">
