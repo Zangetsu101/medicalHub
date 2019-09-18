@@ -54,6 +54,10 @@ class DashboardController extends Controller
             foreach($prescriptions as $prescription)
             {
                 $prescription->appointment;
+                if($prescription->appointment->rating)
+                    $prescription->appointment['hasRating']=true;
+                else
+                    $prescription->appointment['hasRating']=false;
                 array_push($dates,$prescription->appointment->date);
                 array_push($weights,$prescription->weight);
                 array_push($bp_low,$prescription->bp_low);

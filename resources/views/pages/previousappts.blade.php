@@ -41,7 +41,7 @@
                             <td> <div>Given</a></div> </td>  
                         
                         @else
-                            <td> <div class="col-md-2"><a href="{{route('ratingform', $apt->appt_id)}}" type="button btn-primary py-2 px-3">Rate</a></div> </td>
+                            <td> <div ><a href="{{route('ratingform', $apt->appt_id)}}" type="button btn-primary py-2 px-3">Rate</a></div> </td>
                                 
                         @endif
                             

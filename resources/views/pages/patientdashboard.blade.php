@@ -33,7 +33,11 @@
                                         <div class="row">
                                             <div class="col-md-5"><a href="{{route('prescription.show',$prescription->prescription_id)}}">{{$prescription->appointment->date}}</a></div>
                                             <div class="col-md-5">{{$prescription->appointment->doctor->name}}</div>
+                                            @if($prescription->appointment->hasRating)
+                                                <div class="col-md-2">Given</div> 
+                                            @else
                                             <div class="col-md-2"><a href="{{route('ratingform', $prescription->appt_id)}}" type="button btn-primary py-2 px-3">Rate</a></div>
+                                            @endif
                                         </div>
                                     </div>   
                                 @endforeach
