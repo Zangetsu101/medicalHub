@@ -13,6 +13,9 @@ class MedicineController extends Controller
         $medicines=Medicine::all();
         return $medicines;
     }
+
+    /*Adding new medicine to medicines table 
+    when doctor doesn't choose any from existing medicines from table */
     public function NewMedicine(Request $request) {
         $medicine=new Medicine;
         $medicine->name=$request->name;
@@ -20,6 +23,7 @@ class MedicineController extends Controller
         return $medicine;
     }
 
+    //Adding medicines to pres_medicines table when doctor is writing a prescription
     public function NewPrescribedMedicine(Request $request) {
         $medicine=new PrescribedMedicine;
         $medicine->prescription_id=$request->prescription_id;

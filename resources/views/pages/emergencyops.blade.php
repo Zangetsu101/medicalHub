@@ -5,16 +5,18 @@
 @endsection
 
 @section('content')
-
+{{-- Showing upcoming emergency operations details to doctor --}}
 <div class="container mt-3">
     <div class="row">
         <div class="columns">
             <div class="vertical-menu">
                 <a href="{{route('upcomingevents')}}">Upcoming Events</a>
-                <a href="{{route('admittedpatients')}}" >Admitted Patients</a>
                 <a href="{{route('todayappts')}}">Today Appointments</a>
+                <a href="{{route('admittedpatients')}}" >Admitted Patients</a>
+                
                 <a href="{{route('emergencyops')}}"class="active">Upcoming Emergency Operations</a>
                 <a href="{{route('previousappts')}}">Previous Patients</a>
+                <a href="{{route('ratings')}}">My Ratings</a>
             </div>
         </div>
 
@@ -34,7 +36,6 @@
                         <td> {{$ep->patient->name}} </td>    
                         <td> {{$ep->date}} </td>      
                         <td> {{$ep->time}} </td>  
-
                     </tr>
 
                 @endforeach

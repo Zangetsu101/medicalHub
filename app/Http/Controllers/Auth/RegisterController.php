@@ -64,6 +64,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+    //Registering a user to both patient table and user table
     protected function create(array $data)
     {
         $id=count(Patient::all())+1;

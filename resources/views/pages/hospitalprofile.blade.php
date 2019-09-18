@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+{{-- Hospital details showing --}}
 <section class="ftco-section">
     <div class="card">
         
@@ -27,6 +28,7 @@
         @guest
             
         @else
+        {{-- Button for admin to edit hospital details --}}
             @if($user->type==3)
                 <p class="button-custom order-lg-last"><a href="{{ route('hosedit', $hospital->hospital_id) }}" class="btn btn-secondary py-2 px-3">Edit Details</a></p>
             @endif

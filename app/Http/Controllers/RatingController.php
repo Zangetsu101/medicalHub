@@ -15,6 +15,8 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Finding the users related to this rating and sending the data to blade
     public function index($id)
     {
         $user=auth()->user();
@@ -74,6 +76,8 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //rating creation. Can be created only once
     public function create(Request $request, $id)
     {
         $user=auth()->user();
@@ -95,11 +99,11 @@ class RatingController extends Controller
         //return $rating;
         $rating->save();
         
-        if($user->type==2){
-            return redirect()->route('previousappts');
-        }
-        else if($user->type==1){
+        if($user->type==1){
             return redirect()->route('dashboard');
+        }
+        else if($user->type==2){
+            return redirect()->route('previousappts');
         }
     }
 
@@ -120,9 +124,35 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $user=auth()->user();
+        $user_id = $user->id;
+
+        $ratings=Rating::where([
+            ['of_user', '=', $user_id]
+        ])->get();
+
+        /*$rating_count = count($ratings);
+        $rating_sum = 0.0;
+        $rating = 0.0;
+        
+        if($rating_count != 0){
+            foreach($ratings as $item){
+                $rating_sum = $rating_sum+$item->rating_value;
+            }
+            $rating = $rating_sum/$rating_count;
+        }*/
+
+        //return $ratings;
+        
+        if($user->type==1){
+            return view('pages.patratings')->with('ratings',$ratings);
+        }
+        else if($user->type==2){
+            return view('pages.docratings')->with('ratings',$ratings);
+        }
+        
     }
 
     /**

@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+{{-- Form to add Rating of a user --}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

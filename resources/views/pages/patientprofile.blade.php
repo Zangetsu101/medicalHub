@@ -15,7 +15,9 @@
 @endsection
 
 @section('content')
-
+{{-- Patient profile --}}
+{{-- Includes previous prescriptions, own Ratings --}}
+{{-- Weight graph and Blood Pressure graph and their tabular chart --}}
     <div class="container mt-3">
         <div class="row justify-content-center">
             <h2>Patient Name: {{$patient->name}}</h2>
@@ -43,7 +45,9 @@
                 @endfor
             </p>
         </div>
-
+        <div class="row justify-content-center">
+            <a href="{{route('ratings')}}" class="btn btn-primary stretched-link">My Ratings</a>
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <div class="card-box">

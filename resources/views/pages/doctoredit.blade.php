@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+{{-- Doctor Edit section with previous details --}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

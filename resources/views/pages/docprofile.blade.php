@@ -17,7 +17,8 @@
 @endsection
 
 @section('content')
-
+{{-- Doctor profile details showing. Divided in 3 cards --}}
+{{-- One shows the profile, One contact and timing, other to make appointment --}}
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-4">
@@ -59,6 +60,7 @@
                                 <span class="fa fa-star"></span>
                             @endif
                         @endfor
+                        
                     </p>
                     </div>
                 </div>
@@ -68,6 +70,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
+                        {{-- Appointment Scheduling portion --}}
                     <form method="POST" action="{{route('appointment.store',$doctor->doc_id)}}">
                         @csrf
                         <div class="form-group row">
@@ -80,6 +83,7 @@
                     </form>
                     @guest
                 
+                    {{-- Button for admin to edit doctor profile --}}
                     @else
                         @if($user->type==3)
                             <p class="button-custom order-lg-last mt-2"><a href="{{ route('docedit', $doctor->doc_id) }}" class="btn btn-secondary py-2 px-3">Edit Profile</a></p>

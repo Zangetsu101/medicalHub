@@ -6,7 +6,9 @@
 @endsection
 
 @section('content')
-
+{{-- Patient dashboard --}}
+{{-- Includes previous and future appointments and --}}
+{{-- Weight graph and Blood Pressure graph --}}
     @if (session('success'))
     <div class="alert alert-success alert-dismissible text-center">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

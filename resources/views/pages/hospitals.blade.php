@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing all hospitals short detail in hospitals tab --}}
   <section class="ftco-section">
     <div class="container">
         <div class="row">

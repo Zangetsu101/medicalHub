@@ -20,6 +20,8 @@ class DoctorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //For doctors tab
     public function index()
     {
         $doctors=Doctor::all();
@@ -44,6 +46,8 @@ class DoctorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //For admin to create a doctor profile with data from blade
     public function create(Request $request)
     {
         $id=count(Doctor::all())+1;
@@ -78,6 +82,8 @@ class DoctorsController extends Controller
         return redirect()->route('timingform', ['doctor'=> $id]);
     }
 
+    //To search a doctor.
+    //Doctor can be searched using Name/Hospital/Speciality keyword
     public function filter(Request $request)
     {
         $name=$request->input('name');
@@ -125,6 +131,9 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Doctor profile showing
+    //Appointment has to be made through profile
     public function show($id)
     {
         $user=auth()->user();
@@ -186,6 +195,8 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Doctor profile details is sent to blade for editing profile
     public function edit($id)
     {        
         $doctor=Doctor::find($id);
@@ -202,6 +213,8 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Updating doctor details after editing
     public function update(Request $request, $id)
     {
         $doctor=Doctor::find($id);
@@ -230,6 +243,7 @@ class DoctorsController extends Controller
         //
     }
 
+    //sending hospital, speciality data to blade for registering doctor 
     public function doctorRegister()
     {
         $hospitals=Hospital::all();
@@ -238,6 +252,7 @@ class DoctorsController extends Controller
         return view('pages.doctorregister')->with($data);
     }
 
+    //Sending doctor profile to blade to add timing
     public function timingForm(Request $request)
     {
         $doctor=Doctor::find($request->doctor);
@@ -245,6 +260,7 @@ class DoctorsController extends Controller
         return view('pages.timingform')->with('doctor', $doctor);
     }
 
+    //Doctor timing registering
     public function doctorTiming(Request $request)
     {
         $doctor=Doctor::find($request->doctor);

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+{{-- Showing upcoming events to doctor --}}
 <div class="container mt-3">
 
     <div class="d-flex justify-content-center">
@@ -16,10 +16,12 @@
         <div class="columns">
             <div class="vertical-menu">
                 <a href="{{route('upcomingevents')}}" class="active">Upcoming Events</a>
-                <a href="{{route('admittedpatients')}}">Admitted Patients</a>
                 <a href="{{route('todayappts')}}">Today Appointments</a>
+                <a href="{{route('admittedpatients')}}">Admitted Patients</a>
+                
                 <a href="{{route('emergencyops')}}">Upcoming Emergency Operations</a>
                 <a href="{{route('previousappts')}}">Previous Patients</a>
+                <a href="{{route('ratings')}}">My Ratings</a>
             </div>
         </div>
 

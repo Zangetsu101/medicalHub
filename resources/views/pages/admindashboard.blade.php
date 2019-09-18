@@ -9,6 +9,8 @@
     </style>
 @endsection
 
+{{-- Admin dashboard contains buttons to register doctor and hospital --}}
+{{-- It also contains doctor list with their details and ratings--}}
 @section('content')
     <div class="container mt-3 mb-3">
         <div class="d-flex flex-column">
@@ -25,7 +27,6 @@
                             <th class="text-center" scope="col">Doc_ID</th>
                             <th class="text-center" scope="col">Name</th>
                             <th class="text-center" scope="col">Hospital Name </th>
-                            <th class="text-center" scope="col">Rating</th>
                         </tr>
                     </thead>
                     <tbody>
